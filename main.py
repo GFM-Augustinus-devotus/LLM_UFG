@@ -10,3 +10,14 @@ with open(".gitignore" , "r") as arquivo:
     key = arquivo.read().strip()
 
 print(key)
+
+Mensagens = [
+    SystemMessage("Traduza o texto para o português"),
+    HumanMessage("Die Eisenfaust am Lanzenschaft")
+]
+
+modelo = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key = key)
+parser = StrOutputParser()
+chain = modelo | parser
+
+resposta = chain.invoke(Mensagens)
