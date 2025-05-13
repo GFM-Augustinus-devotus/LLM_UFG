@@ -60,7 +60,7 @@ for i in range(len(reader.pages)):
     RGCGtextos = page.extract_text()
     print(RGCGtextos)
 
-print("--------------------------------------------")
+print("------------------------------------------")
 
 #Retirar partes desnecessárias de forma manual do PDF
 PontoInicio = "I-"
