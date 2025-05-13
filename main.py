@@ -4,12 +4,13 @@
 from langchain.schema import StrOutputParser
 from langchain_core.messages import SystemMessage , HumanMessage
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+import os
 #----------------------------------------------------
 
-with open(".gitignore" , "r") as arquivo:
-    key = arquivo.read().strip()
+load_dotenv()
+key = os.getenv("OPENAI-API-KEY")
 
-print(key)
 
 Mensagens = [
     SystemMessage("Traduza o texto para o português"),
@@ -21,3 +22,4 @@ parser = StrOutputParser()
 chain = modelo | parser
 
 resposta = chain.invoke(Mensagens)
+print(resposta)
