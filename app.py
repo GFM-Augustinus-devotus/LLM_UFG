@@ -15,17 +15,17 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
     data = request.json
-    pergunta = data.get("pergunta", "")
-    if not pergunta:
+    print("Recebido:", data)
+    question = data.get("question", "")
+    if not question:
         return jsonify({"error": "Pergunta não enviada"}), 400
-    resultado = qa.invoke({"query": pergunta})
-
-    # Se o resultado for um dicionário, irá pegar o campo correto
-    if isinstance(resultado, dict) and "resultado" in resultado:
-        resposta = resultado["resultado"]
+    result = qa.invoke({"query": question})
+    # Se o resultado for um dicionário, pegue o campo correto
+    if isinstance(result, dict) and "result" in result:
+        answer = result["result"]
     else:
-        resposta = str(resultado)
-    return jsonify({"resposta": resposta})
+        answer = str(result)
+    return jsonify({"answer": answer})
 
 if __name__ == "__main__":
     app.run(debug=True)
