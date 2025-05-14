@@ -145,12 +145,16 @@ df = pd.DataFrame(data)
 print(df)
 
 #Gerando um arquivo tabular para o data frame
-df.to_csv('/content/scraped.csv', escapechar='\\')
-df.head()
+# df.to_csv('/content/scraped.csv', escapechar='\\')
+# df.head()
 
 #Carregando o dataset basedao nos textos extraídos
 
-dataset = load_dataset('text', data_files={'train': ['Estatuto.txt', 'Regimento.txt', 'RGCG.txt']})
+
+dataset = load_dataset(
+    'text',
+    data_files={'train': ['Estatuto.txt', 'Regimento.txt', 'RGCG.txt']}
+)
 
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 
