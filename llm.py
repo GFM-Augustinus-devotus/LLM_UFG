@@ -32,17 +32,17 @@ pesquisa = soup.find_all("h1")
 EstatutoTitulo = ""
 for texto in pesquisa:
     EstatutoTitulo += texto.get_text() + "\n"
-print(EstatutoTitulo)
+#print(EstatutoTitulo)
 
 #Extrair os textos do Estatuto
 EstatutoTexto = ""
 pesquisa = soup.find_all("p")
-print(pesquisa)
+#print(pesquisa)
 
 for texto in pesquisa:
     EstatutoTexto += texto.get_text() + "\n"
 
-print(EstatutoTexto)
+#print(EstatutoTexto)
 
 #Regulamento Geral dos Cursos de Graduação
 
@@ -59,9 +59,9 @@ i = 0
 for i in range(len(reader.pages)):
     page = reader.pages[i]
     RGCGtextos = page.extract_text()
-    print(RGCGtextos)
+    #print(RGCGtextos)
 
-print("------------------------------------------")
+#print("------------------------------------------")
 
 #Retirar partes desnecessárias de forma manual do PDF
 PontoInicio = "I-"
@@ -74,7 +74,7 @@ if IndiceInicio != -1 and IndiceFinal != -1:
     print("Ponto de início" + str(IndiceInicio))
     print("Ponto final" + str(IndiceFinal))
     RGCGtextos = RGCGtextos[1 : IndiceInicio] + RGCGtextos[IndiceFinal : len(RGCGtextos)]
-    print(RGCGtextos)
+    #print(RGCGtextos)
 else:
     print("Pontos de início e fim não encontrados no texto.")
 
@@ -94,7 +94,7 @@ i = 0
 for i in range(len(reader.pages)):
     page = reader.pages[i]
     RegimentoTextos = page.extract_text()
-    print(RegimentoTextos)
+    #print(RegimentoTextos)
 
 #Gerando arquivo do estatuto
 with open("Estatuto.txt", "w", encoding="utf-8") as file:
@@ -186,40 +186,40 @@ qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retrieve
 
 #Gerando as perguntas relacionadas ao dataset selecionado
 
-query1 = "O que o Plano de Desenvolvimento Institucional da UFG apresenta?"
-resultado1 = qa.invoke({"query": query1})
+# query1 = "O que o Plano de Desenvolvimento Institucional da UFG apresenta?"
+# resultado1 = qa.invoke({"query": query1})
 
 
-query2 = "Fale sobre a marca escolhida pela UFG como sua marca oficial, e por qual motivo ela escolheu esse tipo de marca?"
-resultado2 = qa.invoke({"query": query2})
+# query2 = "Fale sobre a marca escolhida pela UFG como sua marca oficial, e por qual motivo ela escolheu esse tipo de marca?"
+# resultado2 = qa.invoke({"query": query2})
 
-query3 = "O que a Portaria nº 2.569, de 26 de agosto de 2020 explica expecificamente, o que eu me devo atentar sobre ela?"
-resultado3 = qa.invoke({"query": query3})
+# query3 = "O que a Portaria nº 2.569, de 26 de agosto de 2020 explica expecificamente, o que eu me devo atentar sobre ela?"
+# resultado3 = qa.invoke({"query": query3})
 
-query4 = "Em que ano entrou em vigor o novo documento do Regimento da UFG e para que ele serve?"
-resultado4 = qa.invoke({"query": query4})
+# query4 = "Em que ano entrou em vigor o novo documento do Regimento da UFG e para que ele serve?"
+# resultado4 = qa.invoke({"query": query4})
 
-#Mostrando as respostas geradas pelo modelo
-print("------------------------")
-print("------------------------")
-print(resultado1)
-print("------------------------")
-print("------------------------")
+# #Mostrando as respostas geradas pelo modelo
+# print("------------------------")
+# print("------------------------")
+# print(resultado1)
+# print("------------------------")
+# print("------------------------")
 
-print("------------------------")
-print("------------------------")
-print(resultado2)
-print("------------------------")
-print("------------------------")
+# print("------------------------")
+# print("------------------------")
+# print(resultado2)
+# print("------------------------")
+# print("------------------------")
 
-print("------------------------")
-print("------------------------")
-print(resultado3)
-print("------------------------")
-print("------------------------")
+# print("------------------------")
+# print("------------------------")
+# print(resultado3)
+# print("------------------------")
+# print("------------------------")
 
-print("------------------------")
-print("------------------------")
-print(resultado4)
-print("------------------------")
-print("------------------------")
+# print("------------------------")
+# print("------------------------")
+# print(resultado4)
+# print("------------------------")
+# print("------------------------")
