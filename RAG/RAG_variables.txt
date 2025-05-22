@@ -33,3 +33,23 @@ Este é o primeiro passo crítico em um sistema RAG. Se o contexto recuperado n�
 seja excelente em Groundness e Answer Relevance, ela não terá as informações certas para gerar uma boa resposta. 
 Uma baixa Context Relevance pode indicar problemas na sua base de conhecimento, no seu algoritmo de recuperação, 
 ou na forma como as consultas são vetorizadas.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Análise em conjunto dessas três variáveis
+
+--> Context Relevance baixa, mas Groundness e Answer Relevance altas:
+Isso pode indicar que, embora o sistema tenha recuperado muitos documentos irrelevantes, a LLM foi capaz de extrair as poucas informações relevantes
+e usá-las bem. No entanto, é um sinal de que o processo de recuperação pode ser ineficiente e trazer custos desnecessários 
+(mais tokens para a LLM processar, por exemplo).
+
+--> Context Relevance alta, mas Groundness baixa:
+Isso é um problema sério! Significa que o sistema recuperou informações altamente relevantes, mas a LLM não as utilizou corretamente
+e está alucinando ou inventando.
+
+--> Context Relevance e Groundness altas, mas Answer Relevance baixa:
+O sistema recuperou contexto relevante e a LLM usou esse contexto 
+para gerar uma resposta, mas a resposta final não atende à pergunta do usuário. A LLM pode ter gerado uma resposta factualmente correta,
+mas que não era o que o usuário queria saber.
+
+-----------------------------------------------------------------------------------------------------------------------------
