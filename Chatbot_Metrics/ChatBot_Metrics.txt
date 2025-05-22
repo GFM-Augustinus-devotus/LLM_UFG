@@ -1,0 +1,15 @@
+As métricas para chatbot são: 
+taxa de resolução, retenção, compreensão e transbordo; 
+nível de satisfação do usuário; tempo de conversa, resposta e resolução; 
+qualidade; eficiência; atendimentos iniciados e concluídos e custo.
+
+A taxa de resolução de chatbot, como o nome já indica, é o número de vezes que a ferramenta resolveu as solicitações dos usuários.
+Digamos que a ferramenta atendeu 100 usuários em um período. Desses, apenas 10 tiveram seus problemas resolvidos.
+Ou seja, 10% indica que a taxa de resolução está baixa e, nesse cenário, é preciso pensar em estratégias para melhorar a resolutividade.
+O ideal é que essa métrica traga números altos, pois isso indica que seu chatbot está funcionando como deveria
+
+Outra métrica vital para chatbot é a taxa de retenção. Isto é, quantos usuários seguem até o final da interação, considerando o número total de atendimentos.
+Ela serve para analisar a qualidade e eficiência das interações e até descobrir o que leva à desistência no meio do caminho. 
+Afinal, se o contato não agrada os clientes, é óbvio que eles não querem utilizar esse canal.
+Só para exemplificar, com essa métrica, você percebe que apenas 30% dos clientes prosseguem com o atendimento após a quarta pergunta. 
+Logo, entende-se que as interações são muito longas ou os consumidores não querem responder tantas questões. Ficou claro? De todo modo, não esqueça de sempre monitorar esse ponto.

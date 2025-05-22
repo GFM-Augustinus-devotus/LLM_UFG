@@ -5,8 +5,12 @@ import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 from trulens_eval import Tru
 from trulens_eval.tru_custom_app import instrument 
-#----------------------
-
+from trulens_eval import Feedback, Select
+from trulens_eval.feedback.provider.openai import OpenAI
+from trulens_eval import TruCustomApp
+from trulens_eval.guardrails.base import context_filter
+from trulens_eval.utils.display import get_feedback_result
+#----------------------s
 
 load_dotenv()
 key = os.getenv("OPENAI-API-KEY")
@@ -32,7 +36,7 @@ vetor.add("RGCG", RGCGtextos)
 # No caso serão 3 parâmetros Groundness | Answer Relevance | Context Relevance
 
 tru = Tru()
-tru.reset_database() #irá reiniciar a base de dados
+tru.reset_database() #irá reiniciar a base de dados será passada para o Trulens
 
 openai_client = OpenAI()
 
@@ -75,7 +79,85 @@ class Rag_llm_ufg:
         return abstracao
     
 rag = Rag_llm_ufg()
-        
+
+#Feedback functions servem para avaliar e registrar o que a LLM fez, 
+# como ela se comportou, e como sua resposta se relaciona com a entrada — com o objetivo de:
+#  Melhorar resultados Detectar erros Ajustar estratégias (prompting, ranking, etc.) Logar interações para análise posterior
+
+provedor = OpenAI()
+
+#Analisando o Groundness
+
+groundness = (
+    Feedback(provedor.groundness_measure_with_cot_reasons, name = "Groundness").on(Select.RecordCalls.retrieve.rets.collect()).on_output()
+)
+
+#Analsando a Relevancia das respostas
+
+respostas = (Feedback(provedor.relevance_with_cot_reasons, name = "Relevância de Respostas").on_input().on_output())
+
+#Analisando a relevância do contexto
+
+contexto = (Feedback(provedor.context_relevance_with_cot_reasons, name = "Relevância de Contexto").on_input().on(Select.RecordCalls.retrieve.rets[:]).aggregate(np.mean))
+
+#Customizando o RAG com o TruCustomApp, e adicionando a lista de Feedbacks para a avaliação
+
+tru_rag = TruCustomApp(rag, app_id = "RAG v1", feedbacks = [groundness,  respostas, contexto])
+
+
+#Para rodar o aplicativo
+
+with tru_rag as recording:
+    rag.query("O que o Plano de Desenvolvimento Institucional da UFG apr")
+
+tru.get_leaderboard()
+
+
+#----------------------- Criando uma segunda versão do App com os GuardRails
+#Usando GuardRails para melhorar a forma de análise desempenho do APP
+
+contexto_pontuacao = (Feedback(provedor.contexto, name = "Relevância de contexto").on_input().on(Select.RecordCalls.Retrieve.rets))
+
+class RAG_Com_Filtros:
+    @instrument
+    @context_filter(contexto_pontuacao, 0.5) #Vai filtrar a parti de pontuações de 0.5
+    def abstrair(self, query: str) -> list:  #Retirnado a relevância do texto
+        resultado = vetor.query(query_texts=query,n_results=4)
+        return [documento for sublista in resultado['documents'] for documento in sublista]
+    
+    @instrument
+    def responder(self, query: str, contexto_str:list) -> str: #Gerar uma resposta a partir do contexto
+
+        resultado = openai_client.chat.completions.create(
+                model = "gpt-3.5-turbo",
+                temperature = 0, 
+                messages = [{"role": "user",
+                            "content": 
+                            f"Foi passado o contexto informativo logo abaixo. \n"
+                            f"\n--------------------------\n"
+                            f"{contexto_str}"
+                            f"\n--------------------------\n"
+                            f"Dado essa informação, por favor responda a pergunta:{query}"
+                            }]
+            ).choices[0].message.content
+        return resultado
+
+    def query(self, query: str)-> str:
+        abstracao = self.retrieve(query)
+        completition = self.generate_completition(query, abstracao)
+        return abstracao
+    
+rag = RAG_Com_Filtros()
+
+Tru_Rag_Filtrado = TruCustomApp(rag , app_id = 'RAG v2', feedbacks = [groundness, respostas, contexto])
+
+with Tru_Rag_Filtrado as recording:
+    rag.query("Fale sobre a marca escolhida pela UFG como sua marca oficial, e por qual motivo ela escolheu esse tipo de marca?")
+
+tru.get_leaderboard(app_ids=[])
+
+resultados_finais = recording.records[-1]
+get_feedback_result(resultados_finais, "Relevância de Contexto")
 
 
 

@@ -1,0 +1,35 @@
+Groundness:
+
+A Groundness avalia se a resposta gerada pela LLM é baseada e suportada pelas informações recuperadas (o contexto). 
+Em outras palavras, ela verifica se a LLM está "inventando" informações (alucinações) ou se está realmente utilizando 
+os documentos fornecidos como base.
+
+Como o TruLens calcula (geralmente): O TruLens, muitas vezes, divide a resposta da LLM em sentenças individuais
+e, para cada sentença, tenta identificar se há evidência de suporte nos documentos de contexto recuperados. 
+Uma pontuação alta indica que a resposta é bem fundamentada nas informações fornecidas.
+
+Importância: É fundamental para garantir a veracidade e a confiabilidade das respostas da sua LLM.
+Uma baixa Groundness indica que sua LLM pode estar alucinando.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Answer Relevance:
+
+A Answer Relevance avalia o quão útil, direta e relevante a resposta final da LLM é para a pergunta original do usuário.
+Não se trata apenas de ser factualmente correta, mas de realmente abordar a intenção e a necessidade do usuário.
+
+Uma alta Answer Relevance significa que sua LLM está entregando o que o usuário realmente precisa,
+ melhorando a experiência do usuário. Uma baixa relevância pode indicar que a LLM está divagando,
+  não entendendo a pergunta ou fornecendo informações tangenciais.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Context Relevance
+
+Context Relevance avalia o quão relevantes e úteis os documentos (chunks de contexto) recuperados pelo seu 
+sistema de recuperação (o "R" do RAG) são para a pergunta original.
+
+Este é o primeiro passo crítico em um sistema RAG. Se o contexto recuperado não for relevante, mesmo que a LLM 
+seja excelente em Groundness e Answer Relevance, ela não terá as informações certas para gerar uma boa resposta. 
+Uma baixa Context Relevance pode indicar problemas na sua base de conhecimento, no seu algoritmo de recuperação, 
+ou na forma como as consultas são vetorizadas.
