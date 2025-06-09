@@ -3,14 +3,20 @@ from llm import *
 from openai import OpenAI
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
-from trulens_eval import Tru
-from trulens_eval.tru_custom_app import instrument 
-from trulens_eval import Feedback, Select
+from trulens.apps.langchain import TruChain
+
+from trulens_eval.feedback.provider.openai import OpenAI as TruOpenAI
+
+from trulens_eval import Feedback, Select, TruCustomApp
 from trulens_eval.feedback.provider.openai import OpenAI
-from trulens_eval import TruCustomApp
+from trulens_eval.tru_custom_app import instrument
+
+from trulens_eval import Tru, Feedback, Select, TruCustomApp
+from trulens_eval.tru_custom_app import instrument
+from trulens_eval.feedback.provider.openai import OpenAI
 from trulens_eval.guardrails.base import context_filter
 from trulens_eval.utils.display import get_feedback_result
-#----------------------s
+#----------------------
 
 load_dotenv()
 key = os.getenv("OPENAI-API-KEY")
@@ -108,56 +114,56 @@ tru_rag = TruCustomApp(rag, app_id = "RAG v1", feedbacks = [groundness,  respost
 #Para rodar o aplicativo
 
 with tru_rag as recording:
-    rag.query("O que o Plano de Desenvolvimento Institucional da UFG apr")
+    rag.query("O que o Plano de Desenvolvimento Institucional da UFG está explicando?")
 
-tru.get_leaderboard()
+tru.get_leaderboard() #Dashboard Do Trulens para ver o desempenho do arquivo
 
 
 #----------------------- Criando uma segunda versão do App com os GuardRails
 #Usando GuardRails para melhorar a forma de análise desempenho do APP
 
-contexto_pontuacao = (Feedback(provedor.contexto, name = "Relevância de contexto").on_input().on(Select.RecordCalls.Retrieve.rets))
+# contexto_pontuacao = (Feedback(provedor.contexto, name = "Relevância de contexto").on_input().on(Select.RecordCalls.Retrieve.rets))
 
-class RAG_Com_Filtros:
-    @instrument
-    @context_filter(contexto_pontuacao, 0.5) #Vai filtrar a parti de pontuações de 0.5
-    def abstrair(self, query: str) -> list:  #Retirnado a relevância do texto
-        resultado = vetor.query(query_texts=query,n_results=4)
-        return [documento for sublista in resultado['documents'] for documento in sublista]
+# class RAG_Com_Filtros:
+#     @instrument
+#     @context_filter(contexto_pontuacao, 0.5) #Vai filtrar a parti de pontuações de 0.5
+#     def abstrair(self, query: str) -> list:  #Retirnado a relevância do texto
+#         resultado = vetor.query(query_texts=query,n_results=4)
+#         return [documento for sublista in resultado['documents'] for documento in sublista]
     
-    @instrument
-    def responder(self, query: str, contexto_str:list) -> str: #Gerar uma resposta a partir do contexto
+#     @instrument
+#     def responder(self, query: str, contexto_str:list) -> str: #Gerar uma resposta a partir do contexto
 
-        resultado = openai_client.chat.completions.create(
-                model = "gpt-3.5-turbo",
-                temperature = 0, 
-                messages = [{"role": "user",
-                            "content": 
-                            f"Foi passado o contexto informativo logo abaixo. \n"
-                            f"\n--------------------------\n"
-                            f"{contexto_str}"
-                            f"\n--------------------------\n"
-                            f"Dado essa informação, por favor responda a pergunta:{query}"
-                            }]
-            ).choices[0].message.content
-        return resultado
+#         resultado = openai_client.chat.completions.create(
+#                 model = "gpt-3.5-turbo",
+#                 temperature = 0, 
+#                 messages = [{"role": "user",
+#                             "content": 
+#                             f"Foi passado o contexto informativo logo abaixo. \n"
+#                             f"\n--------------------------\n"
+#                             f"{contexto_str}"
+#                             f"\n--------------------------\n"
+#                             f"Dado essa informação, por favor responda a pergunta:{query}"
+#                             }]
+#             ).choices[0].message.content
+#         return resultado
 
-    def query(self, query: str)-> str:
-        abstracao = self.retrieve(query)
-        completition = self.generate_completition(query, abstracao)
-        return abstracao
+#     def query(self, query: str)-> str:
+#         abstracao = self.retrieve(query)
+#         completition = self.generate_completition(query, abstracao)
+#         return abstracao
     
-rag = RAG_Com_Filtros()
+# rag = RAG_Com_Filtros()
 
-Tru_Rag_Filtrado = TruCustomApp(rag , app_id = 'RAG v2', feedbacks = [groundness, respostas, contexto])
+# Tru_Rag_Filtrado = TruCustomApp(rag , app_id = 'RAG v2', feedbacks = [groundness, respostas, contexto])
 
-with Tru_Rag_Filtrado as recording:
-    rag.query("Fale sobre a marca escolhida pela UFG como sua marca oficial, e por qual motivo ela escolheu esse tipo de marca?")
+# with Tru_Rag_Filtrado as recording:
+#     rag.query("Fale sobre a marca escolhida pela UFG como sua marca oficial, e por qual motivo ela escolheu esse tipo de marca?")
 
-tru.get_leaderboard(app_ids=[])
+# tru.get_leaderboard(app_ids=[])
 
-resultados_finais = recording.records[-1]
-get_feedback_result(resultados_finais, "Relevância de Contexto")
+# resultados_finais = recording.records[-1]
+# get_feedback_result(resultados_finais, "Relevância de Contexto")
 
 
 
