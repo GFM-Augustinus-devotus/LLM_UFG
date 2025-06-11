@@ -12,8 +12,11 @@
     <div id="chat">
         <h2>UFG-LLM-APP</h2>
         <div id="messages"></div>
-        <input type="text" id="question" placeholder="Digite sua pergunta..." autocomplete="off"/>
-        <button id="send">Enviar</button>
+            <div id="input-area">
+                <textarea id="question" placeholder="Digite sua pergunta..." autocomplete="off" rows="1"></textarea>
+                <button id="send">Enviar</button>
+                <button id="clear" title="Limpar chat">🗑️</button>
+        </div>
     </div>
     <script src="{{ url_for('static', filename='chat.js') }}"></script>
 </body>

@@ -13,3 +13,19 @@ Ela serve para analisar a qualidade e eficiência das interações e até descob
 Afinal, se o contato não agrada os clientes, é óbvio que eles não querem utilizar esse canal.
 Só para exemplificar, com essa métrica, você percebe que apenas 30% dos clientes prosseguem com o atendimento após a quarta pergunta. 
 Logo, entende-se que as interações são muito longas ou os consumidores não querem responder tantas questões. Ficou claro? De todo modo, não esqueça de sempre monitorar esse ponto.
+
+
+----------> Estudo dos Chunks
+
+Chunks retornados: 3
+Tamanho total dos textos: 32.920 caracteres (aproximadamente 5.000 a 6.000 tokens, dentro do limite do modelo gpt-3.5-turbo).
+Os chunks grandes (por exemplo, com 6.000, 21.000, 26.000 caracteres) contêm o texto completo das resoluções e documentos, não apenas títulos ou sumários.
+Os chunks pequenos são apenas introduções, mas agora não dominam a busca.
+O que isso significa?
+O retriever está conseguindo acessar o conteúdo real dos documentos.
+O modelo agora tem contexto suficiente para responder perguntas sobre as resoluções e textos completos.
+Você não deve mais ter problemas de contexto insuficiente ou excesso de tokens (desde que mantenha k=3 e chunk_size em torno de 2000).
+Dicas finais
+Se alguma resposta vier muito genérica, pode ajustar o chunk_size para 1500 ou 1000 para mais precisão.
+Se voltar a dar erro de contexto, reduza k para 2.
+Se quiser respostas mais específicas, pode ajustar o prompt para pedir respostas mais objetivas.

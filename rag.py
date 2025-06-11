@@ -1,5 +1,6 @@
 #-----------------------------
 from llm import *
+from llm import df
 from openai import OpenAI
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
@@ -34,6 +35,14 @@ vetor = cliente.get_or_create_collection(name = "UFG", embedding_function="embed
 vetor.add("Etatuto", EstatutoTexto)
 vetor.add("Regimento", RegimentoTextos)
 vetor.add("RGCG", RGCGtextos)
+
+for idx, row in df.iterrows():
+    vetor.add(
+        ids=[str(idx)],  # ID único para cada documento
+        documents=[row['text']],
+        metadatas=[{"page_name": row['page_name']}]
+    )
+
 
 #--------------------------------------------
 

@@ -52,12 +52,18 @@ body {
 
 #question {
     width: 70%;
+    min-height: 38px;
+    max-height: 120px;
     padding: 10px;
     border: none;
     border-radius: 6px;
     background-color: #333;
     color: #fff;
-    margin-right: 10px;
+    resize: none;
+    margin-right: 0;
+    transition: min-height 0.2s;
+    font-family: inherit;
+    font-size: 1em;
 }
 
 #send {
@@ -72,4 +78,25 @@ body {
 
 #send:hover {
     background-color: #1565c0;
+}
+
+#input-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#clear {
+    padding: 8px 10px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+#clear:hover {
+    background-color: #b71c1c;
 }

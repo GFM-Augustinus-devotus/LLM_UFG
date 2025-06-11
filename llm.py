@@ -12,6 +12,8 @@ from langchain_core.prompts import PromptTemplate
 from langchain.schema import Document
 from dotenv import load_dotenv
 import os
+import pdfplumber
+import re
 
 #Carregando a chave da API da OpenAI
 
@@ -96,6 +98,56 @@ for i in range(len(reader.pages)):
     RegimentoTextos = page.extract_text()
     #print(RegimentoTextos)
 
+#Extraindo mais textos (No caso são os PDFs da pasta de documentos importantes)
+diretório = "Documentos_Importantes"
+textos = {}
+
+def clean_pdf_text(text):
+    text = re.sub(r'\n{2,}', '[PARAGRAPH]', text)
+    text = re.sub(r'\n', ' ', text)
+    text = re.sub(r'\[PARAGRAPH\]' , '\n\n', text)
+    text = re.sub(r' +' , ' ', text)
+    text = re.sub(r' +', ' ', text)
+    return text.strip()
+
+for filename in os.listdir(diretório):
+    if filename.lower().endswith(".pdf"):
+        pdf_path = os.path.join(diretório, filename)
+        text = ""
+        try:
+            with pdfplumber.open(pdf_path) as pdf:
+                for page in pdf.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        text += page_text + "\n"
+            text = clean_pdf_text(text)
+            textos[filename] = text
+            txt_filename = filename.replace(".pdf",  ".txt")
+            with open(txt_filename, "w", encoding="utf-8") as f:
+                f.write(text)
+            print(f"Texto extraído e salvo: {txt_filename}")
+        except Exception as e:
+            print(f"Erro ao extrair o texto: {filename}: {e}")
+
+# for filename in os.listdir(diretório):
+#     if filename.lower().endswith(".pdf"):
+#         pdf_path = os.path.join(diretório, filename)
+#         text = ""
+#         try:
+#             reader = PdfReader(pdf_path)
+#             for page in reader.pages:
+#                 page_text = page.extract_text()
+#                 if page_text:
+#                     text += page_text + "\n"
+#             textos[filename] = text
+#             # Salva cada PDF como um .txt para uso posterior
+#             txt_filename = filename.replace(".pdf", ".txt")
+#             with open(txt_filename, "w", encoding="utf-8") as f:
+#                 f.write(text)
+#             print(f"Extraído e salvo: {txt_filename}")
+#         except Exception as e:
+#             print(f"Erro ao processar {filename}: {e}")
+
 #Gerando arquivo do estatuto
 with open("Estatuto.txt", "w", encoding="utf-8") as file:
     file.write(EstatutoTitulo + "\n")
@@ -133,6 +185,27 @@ with open("Regimento.txt", "r", encoding="utf-8") as file:
     text3 = file.read()
     data['text'].append(text3)
 
+txt_files = ["Estatuto.txt", "RGCG.txt", "Regimento.txt"]
+
+# Adiciona os arquivos .txt gerados a partir dos PDFs da pasta Documentos_Importantes
+for filename in os.listdir(diretório):
+    if filename.lower().endswith(".pdf"):
+        txt_filename = filename.replace(".pdf", ".txt")
+        if os.path.exists(txt_filename) and txt_filename not in txt_files:
+            txt_files.append(txt_filename)
+
+# Monta o DataFrame com todos os textos
+data = {
+    'page_name': [],
+    'text': []
+}
+
+for txt_file in txt_files:
+    with open(txt_file, "r", encoding="utf-8") as file:
+        text = file.read()
+        data['page_name'].append(txt_file)
+        data['text'].append(text)    
+
 df = pd.DataFrame(data)
 print(df)
 
@@ -145,10 +218,10 @@ print(df)
 
 dataset = load_dataset(
     'text',
-    data_files={'train': ['Estatuto.txt', 'Regimento.txt', 'RGCG.txt']}
+    data_files={'train': txt_files}
 )
 
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
 # documents = [Document(page_content=text) for text in dataset['train']['text']]
 
@@ -156,13 +229,14 @@ print(dataset['train'].column_names)  # Adicione para depuração
 
 # Ajuste para garantir que está pegando o campo correto
 if 'text' in dataset['train'].column_names:
-    documents = [Document(page_content=text) for text in dataset['train']['text']]
+    documents = [Document(page_content=text) for text in dataset['train']['text'] if len(text.strip()) > 100]
 else:
     # Tente pegar o primeiro campo disponível
     first_col = dataset['train'].column_names[0]
-    documents = [Document(page_content=text) for text in dataset['train'][first_col]]
+    documents = [Document(page_content=text) for text in dataset['train'][first_col] if len(text.strip()) > 100]
 
 texts = text_splitter.split_documents(documents)
+print(f"Total de Cunks: {len(texts)}")
 
 embeddings = OpenAIEmbeddings(openai_api_key=key)
 db = FAISS.from_documents(texts, embeddings)
@@ -172,7 +246,7 @@ db = FAISS.from_documents(texts, embeddings)
 from langchain.chains import RetrievalQA
 from langchain import PromptTemplate
 
-retriever = db.as_retriever()
+retriever = db.as_retriever(search_kwargs={"k": 1})
 prompt_template = """Use as seguintes informações contextuais para responder à pergunta no final. Se você não souber a resposta, diga: "Não sei".
 
 Contexto: {context}
@@ -223,3 +297,11 @@ qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retrieve
 # print(resultado4)
 # print("------------------------")
 # print("------------------------")
+
+# print("Arquivos carregados:", txt_files)
+# docs = retriever.get_relevant_documents("Teste de pergunta")
+# print(f"Chunks retornados: {len(docs)}")
+# print(f"Tamanho total dos textos: {sum(len(doc.page_content) for doc in docs)} caracteres")
+
+# for i, chunk in enumerate(texts):
+#     print(f"Chunk {i} ({len(chunk.page_content)} chars): {repr(chunk.page_content[:100])}")
