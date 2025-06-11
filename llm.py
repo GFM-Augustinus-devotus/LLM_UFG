@@ -20,83 +20,83 @@ import re
 load_dotenv()
 key = os.getenv("OPENAI-API-KEY")
 
-#Estatuto UFG e documentos relacionados
-link = "https://ufg.br/p/6383-documentos"
-headers = {'User-Agent': "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36" }
+# #Estatuto UFG e documentos relacionados
+# link = "https://ufg.br/p/6383-documentos"
+# headers = {'User-Agent': "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36" }
 
-#Extraindo o Header do estatutoz
-page = requests.get(link, headers=headers)
-soup = BeautifulSoup(page.text, 'html.parser')
+# #Extraindo o Header do estatutoz
+# page = requests.get(link, headers=headers)
+# soup = BeautifulSoup(page.text, 'html.parser')
 
-#Extrair os títulos do Estatuto
+# #Extrair os títulos do Estatuto
 
-pesquisa = soup.find_all("h1")
-EstatutoTitulo = ""
-for texto in pesquisa:
-    EstatutoTitulo += texto.get_text() + "\n"
-#print(EstatutoTitulo)
+# pesquisa = soup.find_all("h1")
+# EstatutoTitulo = ""
+# for texto in pesquisa:
+#     EstatutoTitulo += texto.get_text() + "\n"
+# #print(EstatutoTitulo)
 
-#Extrair os textos do Estatuto
-EstatutoTexto = ""
-pesquisa = soup.find_all("p")
-#print(pesquisa)
+# #Extrair os textos do Estatuto
+# EstatutoTexto = ""
+# pesquisa = soup.find_all("p")
+# #print(pesquisa)
 
-for texto in pesquisa:
-    EstatutoTexto += texto.get_text() + "\n"
+# for texto in pesquisa:
+#     EstatutoTexto += texto.get_text() + "\n"
 
-#print(EstatutoTexto)
+# #print(EstatutoTexto)
 
-#Regulamento Geral dos Cursos de Graduação
+# #Regulamento Geral dos Cursos de Graduação
 
-url = "https://files.cercomp.ufg.br/weby/up/765/o/rgcg.pdf"
-RGCG_Titulo = "RGCG.pdf"
-RGCGtextos = ""
+# url = "https://files.cercomp.ufg.br/weby/up/765/o/rgcg.pdf"
+# RGCG_Titulo = "RGCG.pdf"
+# RGCGtextos = ""
 
-response = requests.get(url)
-with open(RGCG_Titulo, "wb") as f:
-    f.write(response.content)
+# response = requests.get(url)
+# with open(RGCG_Titulo, "wb") as f:
+#     f.write(response.content)
 
-reader = PdfReader(RGCG_Titulo)
-i = 0
-for i in range(len(reader.pages)):
-    page = reader.pages[i]
-    RGCGtextos = page.extract_text()
-    #print(RGCGtextos)
+# reader = PdfReader(RGCG_Titulo)
+# i = 0
+# for i in range(len(reader.pages)):
+#     page = reader.pages[i]
+#     RGCGtextos = page.extract_text()
+#     #print(RGCGtextos)
 
-#print("------------------------------------------")
+# #print("------------------------------------------")
 
-#Retirar partes desnecessárias de forma manual do PDF
-PontoInicio = "I-"
-PontoFinal = "X-"
-IndiceInicio = RGCGtextos.find(PontoInicio)
-IndiceFinal = RGCGtextos.find(PontoFinal)
+# #Retirar partes desnecessárias de forma manual do PDF
+# PontoInicio = "I-"
+# PontoFinal = "X-"
+# IndiceInicio = RGCGtextos.find(PontoInicio)
+# IndiceFinal = RGCGtextos.find(PontoFinal)
 
-#Verificação se os pontos selecionados existem no texto extraído
-if IndiceInicio != -1 and IndiceFinal != -1:
-    print("Ponto de início" + str(IndiceInicio))
-    print("Ponto final" + str(IndiceFinal))
-    RGCGtextos = RGCGtextos[1 : IndiceInicio] + RGCGtextos[IndiceFinal : len(RGCGtextos)]
-    #print(RGCGtextos)
-else:
-    print("Pontos de início e fim não encontrados no texto.")
+# #Verificação se os pontos selecionados existem no texto extraído
+# if IndiceInicio != -1 and IndiceFinal != -1:
+#     print("Ponto de início" + str(IndiceInicio))
+#     print("Ponto final" + str(IndiceFinal))
+#     RGCGtextos = RGCGtextos[1 : IndiceInicio] + RGCGtextos[IndiceFinal : len(RGCGtextos)]
+#     #print(RGCGtextos)
+# else:
+#     print("Pontos de início e fim não encontrados no texto.")
 
-#Regimento Interno
+# #Regimento Interno
 
-url = "https://files.cercomp.ufg.br/weby/up/66/o/Regimento_UFG.pdf"
-RegimentoTitulo = "Regimento.pdf"
-RegimentoTextos = ""
+# url = "https://files.cercomp.ufg.br/weby/up/66/o/Regimento_UFG.pdf"
+# RegimentoTitulo = "Regimento.pdf"
+# RegimentoTextos = ""
 
-response = requests.get(url)
-with open(RegimentoTitulo, "wb") as f:
-    f.write(response.content)
+# response = requests.get(url)
+# with open(RegimentoTitulo, "wb") as f:
+#     f.write(response.content)
 
 
-reader = PdfReader(RegimentoTitulo)
-i = 0
-for i in range(len(reader.pages)):
-    page = reader.pages[i]
-    RegimentoTextos = page.extract_text()
-    #print(RegimentoTextos)
+# reader = PdfReader(RegimentoTitulo)
+# i = 0
+# for i in range(len(reader.pages)):
+#     page = reader.pages[i]
+#     RegimentoTextos = page.extract_text()
+#     #print(RegimentoTextos)
 
 #Extraindo mais textos (No caso são os PDFs da pasta de documentos importantes)
 diretório = "Documentos_Importantes"
@@ -149,23 +149,23 @@ for filename in os.listdir(diretório):
 #             print(f"Erro ao processar {filename}: {e}")
 
 #Gerando arquivo do estatuto
-with open("Estatuto.txt", "w", encoding="utf-8") as file:
-    file.write(EstatutoTitulo + "\n")
-    file.write(EstatutoTexto + "\n")
-if file.closed:
-    print("Arquivo criado com sucesso!")
+# with open("Estatuto.txt", "w", encoding="utf-8") as file:
+#     file.write(EstatutoTitulo + "\n")
+#     file.write(EstatutoTexto + "\n")
+# if file.closed:
+#     print("Arquivo criado com sucesso!")
 
-#Gerando arquivo do RGCG
-with open("RGCG.txt", "w", encoding="utf-8") as file:
-    file.write(RGCGtextos + "\n")
-if file.closed:
-    print("Arquivo criado com sucesso!")
+# #Gerando arquivo do RGCG
+# with open("RGCG.txt", "w", encoding="utf-8") as file:
+#     file.write(RGCGtextos + "\n")
+# if file.closed:
+#     print("Arquivo criado com sucesso!")
 
-#Gerando arquivo do Regimento
-with open("Regimento.txt", "w", encoding="utf-8") as file:
-    file.write(RegimentoTextos + "\n")
-if file.closed:
-    print("Arquivo criado com sucesso!")
+# #Gerando arquivo do Regimento
+# with open("Regimento.txt", "w", encoding="utf-8") as file:
+#     file.write(RegimentoTextos + "\n")
+# if file.closed:
+#     print("Arquivo criado com sucesso!")
 
 #Gerando o DataFrame
 data = {

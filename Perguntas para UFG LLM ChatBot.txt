@@ -1,8 +1,10 @@
 Perguntas para UFG LLM ChatBot
 
----> Regimento
+------------ Regimento Interno --------------------
 
------------- ESTATUTO UFG -----------
+Como funciona a autonomia da faculdade pública?
+
+------------ ESTATUTO UFG -------------------------
 
 O que o Plano de Desenvolvimento Institucional da UFG apresenta?
 
