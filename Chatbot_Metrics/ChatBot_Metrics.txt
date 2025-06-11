@@ -29,3 +29,17 @@ Dicas finais
 Se alguma resposta vier muito genérica, pode ajustar o chunk_size para 1500 ou 1000 para mais precisão.
 Se voltar a dar erro de contexto, reduza k para 2.
 Se quiser respostas mais específicas, pode ajustar o prompt para pedir respostas mais objetivas.
+
+chunk_size
+Define o tamanho (em caracteres ou tokens) de cada pedaço ("chunk") em que o texto será dividido para indexação e busca.
+Exemplo: chunk_size=1000 cria pedaços de até 1000 caracteres.
+
+chunk_overlap
+Define quantos caracteres (ou tokens) do final de um chunk serão repetidos no início do próximo.
+Isso garante que informações que ficam na "fronteira" entre chunks não sejam perdidas.
+Exemplo: chunk_overlap=50 faz com que os últimos 50 caracteres de um chunk também estejam no início do próximo.
+
+search_kwargs
+São argumentos passados para o método de busca do retriever.
+O mais comum é o k, que define quantos chunks/documentos mais relevantes devem ser retornados para cada pergunta.
+Exemplo: search_kwargs={"k": 2} retorna os 2 chunks mais similares à consulta.

@@ -221,7 +221,7 @@ dataset = load_dataset(
     data_files={'train': txt_files}
 )
 
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
 
 # documents = [Document(page_content=text) for text in dataset['train']['text']]
 
@@ -246,7 +246,7 @@ db = FAISS.from_documents(texts, embeddings)
 from langchain.chains import RetrievalQA
 from langchain import PromptTemplate
 
-retriever = db.as_retriever(search_kwargs={"k": 1})
+retriever = db.as_retriever(search_kwargs={"k": 3})
 prompt_template = """Use as seguintes informações contextuais para responder à pergunta no final. Se você não souber a resposta, diga: "Não sei".
 
 Contexto: {context}
@@ -255,7 +255,7 @@ Pergunta: {question}"""
 
 PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 chain_type_kwargs = {"prompt": PROMPT}
-llm = ChatOpenAI(openai_api_key=key, model="gpt-3.5-turbo")
+llm = ChatOpenAI(openai_api_key=key, model="gpt-4-turbo")
 qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, chain_type_kwargs=chain_type_kwargs)
 
 #Gerando as perguntas relacionadas ao dataset selecionado

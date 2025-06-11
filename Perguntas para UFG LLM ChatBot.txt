@@ -1,5 +1,17 @@
 Perguntas para UFG LLM ChatBot
 
+---> Regimento
+
+------------ ESTATUTO UFG -----------
+
+O que o Plano de Desenvolvimento Institucional da UFG apresenta?
+
+Fale sobre a marca escolhida pela UFG como sua marca oficial, e por qual motivo ela escolheu esse tipo de marca?
+
+O que a Portaria nº 2.569, de 26 de agosto de 2020 explica especificamente, o que eu me devo atentar sobre ela?
+
+---> RGCG
+
 ------------ Resolução de estágio da EMC -----------
 
 O que a resolução de estágio da EMC se refere?
@@ -10,12 +22,38 @@ Quantas horas semanais serão adicionadas ao professor Coordenador da CPEFM?
 
 Por quanto tempo dura um mandato de um docente coordenador?
 
+
 ------------- Resolução atividades complementares EMC --------
 
-------------- Resolucao PFC 2024 final assinado --------------
+Como funciona o aproveitamento das horas de atividades complementares nos cursos de Engenharia Elétrica, Engenharia Mecânica e Engenharia de Computação?
+
+O significa a sigla CHM no documento de Resolução de Atividades Complementares?
+
+Quais são os tipos de eventos que um aluno pode participar para ganhar horas complementares?
+
+
+------------- Resolução PFC 2024 final assinado --------------
+
+A defesa do Projeto Final pode ocorrer fora do semestre letivo?
+
+Como funciona o cálculo da nota final do PFC?
+
+Quantos projetos diferentes um professor orientador pode orientar?
+
 
 ------------- Resolução Monitoria EMC 2024 ------------------- 
 
+Como funciona a distribuição de vagas e bolsas na parte de monitoria na EMC/UFG?
+
+Quais são os critérios de seleção para se ter um monitor na EMC/UFG?
+
+A quem é atribuída a coordenação das atividades de monitoria?
+
+
 ------------- Resolução modelo de alocação de vagas EMC ------
 
-Você: Como funciona o modelo de alocação de vagas EMC?
+Como funciona o modelo de alocação de vagas EMC?
+
+O que acontecerão com as vagas advindas de vacâncias decorrentes de reprovação no estágio probatório, falecimentos, demissões e exonerações?
+
+Por quanto tempo dura o mandado de um membro da comissão? ----->> pergunta um pouco mal feita de contexto ficou sem resposta.
