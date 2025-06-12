@@ -1,0 +1,20 @@
+Essas mensagens são logs informativos do Trulens sobre como ele está configurando os inputs e outputs para cada métrica de avaliação (feedback) no seu experimento. Veja o que cada uma significa:
+
+Answer Relevance:
+
+input prompt: será o input principal do registro (__record__.main_input).
+input response: será o output principal do registro (__record__.main_output).
+Groundedness:
+
+input source: será o texto das fontes recuperadas (__record__.calls[-1].rets.source_nodes[:].node.text).
+input statement: será o output principal do registro (__record__.main_output).
+Answer Correctness:
+
+input inputs: será o input principal do registro.
+input outputs: será o output principal do registro.
+Aviso sobre serialização:
+
+Feedback implementation <function groundtruth_agreement ...> cannot be serialized: Module __main__ is not importable. This may be ok unless you are using the deferred feedback mode.
+Isso significa que a função Python que você criou para o feedback de "Answer Correctness" não pode ser serializada (salva para uso posterior), pois está definida no script principal. Isso não é um problema se você não estiver usando o modo "deferred feedback" (avaliação adiada).
+Resumo:
+Essas mensagens apenas informam como os dados estão sendo passados para cada métrica de avaliação. O aviso sobre serialização pode ser ignorado se você não precisa salvar o experimento para rodar em outro processo ou máquina.
