@@ -1,0 +1,11 @@
+O que é: Tamanho (em caracteres) de cada pedaço ("chunk") em que o texto será dividido.
+Aumentar: Menos pedaços, cada um maior. Pode trazer mais contexto por chunk, mas pode perder precisão na busca.
+Diminuir: Mais pedaços, cada um menor. Busca mais precisa, mas pode perder contexto relevante.
+chunk_overlap
+O que é: Quantidade de caracteres que se sobrepõem entre um chunk e o próximo.
+Aumentar: Mais redundância entre chunks, reduz risco de perder contexto importante que está na fronteira entre dois chunks.
+Diminuir: Menos redundância, processamento mais rápido, mas pode perder contexto entre divisões.
+k (no retriever)
+O que é: Quantidade de chunks mais relevantes retornados na busca para responder a pergunta.
+Aumentar: Mais contexto fornecido ao modelo, pode ajudar em perguntas complexas, mas pode trazer informações irrelevantes.
+Diminuir: Menos contexto, respostas mais diretas, mas pode faltar informação para perguntas mais amplas.

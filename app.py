@@ -1,17 +1,19 @@
 from flask import Flask, request, jsonify, render_template
-from llm import qa
-
+from llm import load_qa
 
 app = Flask(__name__)
 
-#Rotas do aplicativo
+# Só carrega o qa se não for o reloader do Flask
+import os
+if os.environ.get("WERKZEUG_RUN_MAIN") == "true" or not app.debug:
+    qa = load_qa()
+else:
+    qa = None
 
-#rota para carregar o arquivo html da página
 @app.route("/")
 def home():
     return render_template("index.html")
 
-#rota para carregar o local das perguntas
 @app.route("/ask", methods=["POST"])
 def ask():
     data = request.json
@@ -19,8 +21,9 @@ def ask():
     question = data.get("question", "")
     if not question:
         return jsonify({"error": "Pergunta não enviada"}), 400
+    if qa is None:
+        return jsonify({"error": "QA não carregado"}), 500
     result = qa.invoke({"query": question})
-    # Se o resultado for um dicionário, pegue o campo correto
     if isinstance(result, dict) and "result" in result:
         answer = result["result"]
     else:
