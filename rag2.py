@@ -88,10 +88,11 @@ metrics = [f_qa_relevance, f_qs_relevance, f_groundedness, f_groundtruth]
 
 def get_trulens_recorder(query_engine, app_id):
     tru_recorder = TruChain(
-    app=query_engine,
-    feedbacks=metrics,
-    app_id=app_id
-)
+        app=query_engine,
+        feedbacks=metrics,
+        app_id=app_id,
+        app_name=app_id 
+    )
     return tru_recorder
 
 tru_recorder = get_trulens_recorder(qa, app_id="QA LLM v1")

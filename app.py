@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Só carrega o qa se não for o reloader do Flask
 import os
 if os.environ.get("WERKZEUG_RUN_MAIN") == "true" or not app.debug:
-    qa = load_qa()
+    _, qa = load_qa()
 else:
     qa = None
 
