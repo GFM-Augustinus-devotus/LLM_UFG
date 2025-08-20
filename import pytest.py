@@ -1,4 +1,3 @@
-import pytest
 from unittest.mock import MagicMock, patch
 from rag2 import get_trulens_recorder, metrics
 
