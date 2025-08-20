@@ -126,5 +126,4 @@ def perguntar():
 
     print("\nResposta da IA:\n", resposta)
 
-if __name__ == "__main__":
-    perguntar()
+perguntar()
