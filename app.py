@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from llm import load_qa
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -29,6 +30,12 @@ def ask():
     else:
         answer = str(result)
     return jsonify({"answer": answer})
+
+@app.route("/resultados")
+def resultados():
+    df = pd.read_csv("static/metricas.csv")
+    metricas = list(zip(df['Métrica'], df['Valor']))
+    return render_template("resultados.html", metricas=metricas)
 
 if __name__ == "__main__":
     app.run(debug=True)

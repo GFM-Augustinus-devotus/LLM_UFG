@@ -56,3 +56,5 @@ mas que não era o que o usuário queria saber.
 
 Vou avaliar e registrar o que a LLM fez com as Feedback functions
 
+----> uma forma de atingir essas variáveis será pelo similitary_searh com o relevance scores
+
