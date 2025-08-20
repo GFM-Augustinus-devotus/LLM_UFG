@@ -2,7 +2,11 @@ from langchain_chroma.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
+from ragas.metrics import AnswerCorrectness, ContextRelevance, Faithfulness
+from ragas import evaluate
+from datasets import Dataset
 import os, re, hashlib
+
 
 load_dotenv()
 
@@ -126,4 +130,78 @@ def perguntar():
 
     print("\nResposta da IA:\n", resposta)
 
+#Criando Métricas RAGAS para o rag do Bot UFG
+    ragas_contexts = [doc.page_content for doc, score in filtrados if doc.page_content and doc.page_content.strip()]
+
+    resposta = modelo.invoke(final_prompt).content
+    resposta = dedupe_lines(resposta)
+
+    ground_truth = os.getenv("EVAL_GROUND_TRUTH", "").strip()
+
+    metrics = [ContextRelevance(), Faithfulness()]
+    if ground_truth:
+        metrics.append(AnswerCorrectness())
+
+    data_dict = {
+        "question": [pergunta],
+        "answer": [resposta],
+        "contexts": [ragas_contexts]
+    }
+
+    if ground_truth:
+        try:
+            metrics = [AnswerCorrectness, ContextRelevance, Faithfulness]
+            data_dict["ground_truth"] = [ground_truth]
+        except NameError:
+            print("Erro ao calcular o valor de ground_truth")
+            pass
+    eval_ds = Dataset.from_dict(data_dict)
+
+    eval_result = evaluate(eval_ds, metrics=metrics)
+
+    print("\nMétricas do RAGAS:")
+
+    try:
+        df = eval_result.to_pandas()  
+    except AttributeError:
+        try:
+            df = eval_result.to_dataframe()
+        except AttributeError:
+            df = None
+
+    try:
+        df = eval_result.to_pandas()
+    except AttributeError:
+        df = eval_result.to_dataframe()
+
+    
+    rename_map = {c: c.replace("nv_", "") for c in df.columns if c.startswith("nv_")}
+    df = df.rename(columns=rename_map)
+
+    row = df.iloc[0]
+
+    if df is not None:
+        
+        row = df.iloc[0]
+        for metric_name, value in row.items():
+            try:
+                print(f"{metric_name}: {float(value):.3f}")
+            except Exception:
+                print(f"{metric_name}: {value}")
+    else:
+        
+        try:
+            d = eval_result.to_dict() 
+            for k, v in d.items():
+                try:
+                    val = v[0] if isinstance(v, list) and v else v
+                    print(f"{k}: {float(val):.3f}")
+                except Exception:
+                    print(f"{k}: {val}")
+        except Exception:
+            print(str(eval_result))
+
 perguntar()
+
+
+

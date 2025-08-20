@@ -1,0 +1,19 @@
+ContextRelevance()
+
+Nome da métrica: "context_relevance"
+
+Mede se os contextos recuperados são relevantes para a pergunta.
+
+----------------
+Faithfulness()
+
+Nome da métrica: "faithfulness"
+
+Mede se a resposta da LLM é fiel ao contexto (sem alucinação).
+
+-----------------
+AnswerCorrectness() (só quando você fornece ground_truth)
+
+Nome da métrica: "answer_correctness"
+
+Mede se a resposta está correta em relação à verdade de referência.
