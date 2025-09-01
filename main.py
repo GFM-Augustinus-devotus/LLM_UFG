@@ -6,7 +6,7 @@ from ragas.metrics import AnswerCorrectness, ContextRelevance, Faithfulness
 from ragas import evaluate
 from datasets import Dataset
 import os, re, hashlib
-
+from storage import init_db, save_rag_run
 
 load_dotenv()
 
@@ -83,6 +83,7 @@ def perguntar():
         print('Resposta da IA:\nNão sei a resposta.')
         return
 
+    # normaliza scores
     pares_doc_score = []
     for doc, score in resultados:
         score_norm = normalize_score_to_01(score)
@@ -96,9 +97,12 @@ def perguntar():
         print('Resposta da IA:\nNão sei a resposta.')
         return
 
-    # monta blocos com fonte/página
+    # ordena por score (desc)
+    filtrados.sort(key=lambda x: x[1], reverse=True)
+
+    # monta blocos com fonte/página para o prompt
     textos = []
-    for doc, sc in sorted(filtrados, key=lambda x: x[1], reverse=True):
+    for doc, sc in filtrados:
         fonte = doc.metadata.get("source", "desconhecida")
         pagina = doc.metadata.get("page", None)
         header = f"[Fonte: {fonte}" + (f", página: {pagina}]" if pagina is not None else "]")
@@ -121,20 +125,37 @@ def perguntar():
         max_tokens=400,
         frequency_penalty=0.2,
     )
+
+    # ==== GERA 1x (sem duplicar) ====
     resposta = modelo.invoke(final_prompt).content
     resposta = dedupe_lines(resposta)
 
+    # ==== DEBUG: lista de scores (todos) ====
     print("DEBUG - Top resultados (normalizados):")
     for i, (doc, s) in enumerate(filtrados, start=1):
         print(f"  {i:02d}) score={s:.3f} | source={doc.metadata.get('source')} | page={doc.metadata.get('page')}")
 
+    # ==== MOSTRAR O "RESPONSE" DO RESULTADO COM MELHOR SCORE ====
+    # Aqui interpretamos "response do result" como o conteúdo recuperado (page_content) do top-1
+    top_doc, top_score = filtrados[0]
+    top_source = top_doc.metadata.get("source", "desconhecida")
+    top_page = top_doc.metadata.get("page", None)
+    print("\nMelhor resultado de recuperação (conteúdo do documento):")
+    print(f"source={top_source} | page={top_page} | score={top_score:.3f}")
+    # mostra apenas um trecho para não poluir o terminal
+    snippet = top_doc.page_content.strip()
+    if len(snippet) > 1200:
+        snippet = snippet[:1200] + "...\n[trecho truncado]"
+    print(snippet)
+
+    # ==== RESPOSTA DA IA (final) ====
     print("\nResposta da IA:\n", resposta)
 
-#Criando Métricas RAGAS para o rag do Bot UFG
-    ragas_contexts = [doc.page_content for doc, score in filtrados if doc.page_content and doc.page_content.strip()]
-
-    resposta = modelo.invoke(final_prompt).content
-    resposta = dedupe_lines(resposta)
+    # ==============================
+    #     AVALIAÇÃO COM RAGAS
+    # ==============================
+    # Não exibir retrieved_contexts; mantemos só as métricas e a resposta
+    ragas_contexts = [doc.page_content for doc, _ in filtrados if doc.page_content and doc.page_content.strip()]
 
     ground_truth = os.getenv("EVAL_GROUND_TRUTH", "").strip()
 
@@ -145,54 +166,52 @@ def perguntar():
     data_dict = {
         "question": [pergunta],
         "answer": [resposta],
-        "contexts": [ragas_contexts]
+        "contexts": [ragas_contexts]  # necessário para RAGAS, mas NÃO vamos imprimir
     }
-
     if ground_truth:
-        try:
-            metrics = [AnswerCorrectness, ContextRelevance, Faithfulness]
-            data_dict["ground_truth"] = [ground_truth]
-        except NameError:
-            print("Erro ao calcular o valor de ground_truth")
-            pass
-    eval_ds = Dataset.from_dict(data_dict)
+        data_dict["ground_truth"] = [ground_truth]
 
+    eval_ds = Dataset.from_dict(data_dict)
     eval_result = evaluate(eval_ds, metrics=metrics)
 
     print("\nMétricas do RAGAS:")
-
+    # tentar dataframe; ocultar retrieved_contexts
+    df = None
     try:
-        df = eval_result.to_pandas()  
+        df = eval_result.to_pandas()
     except AttributeError:
         try:
             df = eval_result.to_dataframe()
         except AttributeError:
             df = None
 
-    try:
-        df = eval_result.to_pandas()
-    except AttributeError:
-        df = eval_result.to_dataframe()
-
-    
-    rename_map = {c: c.replace("nv_", "") for c in df.columns if c.startswith("nv_")}
-    df = df.rename(columns=rename_map)
-
-    row = df.iloc[0]
-
     if df is not None:
-        
+        # remove colunas que não queremos mostrar
+        cols_to_hide = {"retrieved_contexts", "contexts"}
+        show_cols = [c for c in df.columns if c not in cols_to_hide]
+
+        # renomeia nv_*
+        rename_map = {c: c.replace("nv_", "") for c in show_cols if c.startswith("nv_")}
+        df = df.rename(columns=rename_map)
+        show_cols = [rename_map.get(c, c) for c in show_cols]
+
         row = df.iloc[0]
-        for metric_name, value in row.items():
+        # exibe apenas as colunas selecionadas
+        for metric_name in show_cols:
+            val = row.get(metric_name, None)
+            if val is None:
+                continue
             try:
-                print(f"{metric_name}: {float(value):.3f}")
+                print(f"{metric_name}: {float(val):.3f}")
             except Exception:
-                print(f"{metric_name}: {value}")
+                print(f"{metric_name}: {val}")
     else:
-        
+        # fallback: dicionário, mas sem contexts
         try:
-            d = eval_result.to_dict() 
+            d = eval_result.to_dict()
             for k, v in d.items():
+                if k in ("contexts", "retrieved_contexts"):
+                    continue
                 try:
                     val = v[0] if isinstance(v, list) and v else v
                     print(f"{k}: {float(val):.3f}")
@@ -201,7 +220,6 @@ def perguntar():
         except Exception:
             print(str(eval_result))
 
-perguntar()
-
-
-
+if __name__ == "__main__":
+    perguntar()
+    init_db(echo=False)  # cria tabela se não existir
