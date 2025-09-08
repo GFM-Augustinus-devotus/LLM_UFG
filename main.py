@@ -222,4 +222,4 @@ def perguntar():
 
 if __name__ == "__main__":
     perguntar()
-    init_db(echo=False)  # cria tabela se não existir
+    #init_db(echo=False)  # cria tabela se não existir
