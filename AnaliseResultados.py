@@ -1,43 +1,63 @@
-import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 
-dados = []
-with open("Métricas RAG OpenAI - Página1.csv", newline="", encoding="utf-8") as csvfile:
-    leitor = csv.reader(csvfile, delimiter=",")
-    for linha in leitor:
-        dados.append(linha)
+ARQ = "MétricasRAG.csv"
 
-print(dados) 
+# Lê o CSV
+df = pd.read_csv(
+    ARQ,
+    encoding="utf-8-sig",
+    na_values=["x"],  # converte 'x' em NaN
+)
 
-# Carrega o CSV
-df = pd.read_csv("Métricas RAG OpenAI - Página1.csv.csv")
+# Limpa nomes de colunas
+df.columns = [c.strip() for c in df.columns]
 
-# Substitui 'x' por NaN
-df = df.replace("x", pd.NA)
+# Converte vírgula decimal para ponto
+for col in ["Context_relevance", "Faithfulness"]:
+    df[col] = (
+        df[col]
+        .astype(str)
+        .str.strip()
+        .str.replace(",", ".", regex=False)
+    )
+    df[col] = pd.to_numeric(df[col], errors="coerce")
 
-# Conta quantos 'x' havia em cada coluna
-x_counts = (df.isna().sum())  # porque transformamos 'x' em NaN
+# Remove valores inválidos fora de [0,1] (como 500)
+for col in ["Context_relevance", "Faithfulness"]:
+    df.loc[(df[col] < 0) | (df[col] > 1), col] = pd.NA
 
-print("Número de valores 'x' (não contabilizados):")
-print(x_counts)
+# Estatísticas
+stats = df[["Context_relevance", "Faithfulness"]].agg(
+    ["mean", "var", "std"]
+)
+print("📊 Estatísticas das métricas:")
+print(stats)
 
-# Converter colunas para numéricas (ignora NaN)
-df["Context_relevance"] = pd.to_numeric(df["Context_relevance"], errors="coerce")
-df["Faithfulness"] = pd.to_numeric(df["Faithfulness"], errors="coerce")
+# Cria um índice para representar a sequência dos registros
+df = df.reset_index().rename(columns={"index": "Registro"})
 
-# Histograma das duas métricas
-plt.hist(df["Context_relevance"].dropna(), bins=10, alpha=0.5, label="Context_relevance")
-plt.hist(df["Faithfulness"].dropna(), bins=10, alpha=0.5, label="Faithfulness")
-plt.xlabel("Valor")
-plt.ylabel("Frequência")
-plt.title("Distribuição das métricas")
+# Gráfico de linha das métricas
+plt.figure(figsize=(12,6))
+plt.plot(df["Registro"], df["Context_relevance"], marker="o", label="Context_relevance", alpha=0.7)
+plt.plot(df["Registro"], df["Faithfulness"], marker="s", label="Faithfulness", alpha=0.7)
+plt.xlabel("Registro")
+plt.ylabel("Valor")
+plt.title("Evolução das métricas por registro")
 plt.legend()
+plt.grid(True)
 plt.show()
 
-# Boxplot comparativo
-df[["Context_relevance", "Faithfulness"]].plot(kind="box")
-plt.title("Boxplot Context_relevance vs Faithfulness")
+# Gráfico das médias como linha horizontal
+plt.figure(figsize=(12,6))
+for col, cor in zip(["Context_relevance", "Faithfulness"], ["blue", "orange"]):
+    plt.plot(df["Registro"], df[col], alpha=0.6, label=col)
+    plt.axhline(stats.loc["mean", col], color=cor, linestyle="--", label=f"Média {col}")
+plt.xlabel("Registro")
+plt.ylabel("Valor")
+plt.title("Métricas com médias destacadas")
+plt.legend()
+plt.grid(True)
 plt.show()
 
 
