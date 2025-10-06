@@ -2,16 +2,20 @@ from langchain_chroma.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
-from ragas.metrics import ( #Aqui tem vária métricas basta chamá-las e implementá-las
+from ragas.metrics import (
     AnswerCorrectness,
     ContextRelevance,
     Faithfulness,
-    AnswerRelevancy,  # ✅ nova métrica adicionada
+    AnswerRelevancy,
 )
 from ragas import evaluate
 from datasets import Dataset
 import os, re, hashlib
-from storage import init_db, save_rag_run
+from datetime import datetime
+import csv, pathlib
+
+# Caso use, mantenha as importações abaixo
+from storage import init_db, save_rag_run  # (não usados diretamente neste script)
 
 load_dotenv()
 
@@ -32,6 +36,9 @@ HUMAN_TEMPLATE = (
     "Contexto:\n{base_conhecimento}\n"
 )
 
+# =========================
+# Utilidades de normalização
+# =========================
 def normalize_para(p: str) -> str:
     p = re.sub(r"\s+", " ", p.strip().lower())
     return p
@@ -71,6 +78,30 @@ def normalize_score_to_01(score):
         return score
     return (score + 1.0) / 2.0
 
+# =========================
+# CSV helpers
+# =========================
+CSV_PATH = "ragas_metrics.csv"
+
+def append_metrics_csv(row_dict, path=CSV_PATH):
+    """Acrescenta linha com métricas no CSV (cria cabeçalho se não existir)."""
+    path = pathlib.Path(path)
+    field_order = [
+        "timestamp", "question", "answer_len",
+        "context_relevance", "faithfulness", "answer_relevancy", "answer_correctness"
+    ]
+    for k in field_order:
+        row_dict.setdefault(k, "")
+    new_file = not path.exists()
+    with path.open("a", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=field_order)
+        if new_file:
+            w.writeheader()
+        w.writerow(row_dict)
+
+# =========================
+# Fluxo principal
+# =========================
 def perguntar():
     pergunta = input("Escreva sua pergunta:\n")
 
@@ -86,6 +117,12 @@ def perguntar():
     if not resultados:
         print("Nenhum resultado retornado pelo índice vetorial.")
         print('Resposta da IA:\nNão sei a resposta.')
+        # Mesmo sem métricas, registramos linha vazia útil para auditoria
+        append_metrics_csv({
+            "timestamp": datetime.now().isoformat(timespec="seconds"),
+            "question": pergunta,
+            "answer_len": len("Não sei a resposta."),
+        })
         return
 
     # normaliza scores
@@ -100,6 +137,11 @@ def perguntar():
     if not filtrados:
         print(f"Nenhum trecho atingiu o nível mínimo de relevância (threshold={THRESHOLD}).")
         print('Resposta da IA:\nNão sei a resposta.')
+        append_metrics_csv({
+            "timestamp": datetime.now().isoformat(timespec="seconds"),
+            "question": pergunta,
+            "answer_len": len("Não sei a resposta."),
+        })
         return
 
     # ordena por score (desc)
@@ -158,10 +200,8 @@ def perguntar():
     #     AVALIAÇÃO COM RAGAS
     # ==============================
     ragas_contexts = [doc.page_content for doc, _ in filtrados if doc.page_content and doc.page_content.strip()]
-
     ground_truth = os.getenv("EVAL_GROUND_TRUTH", "").strip()
 
-    # ✅ Incluímos AnswerRelevancy, que avalia se a resposta é relevante para a pergunta
     metrics = [ContextRelevance(), Faithfulness(), AnswerRelevancy()]
     if ground_truth:
         metrics.append(AnswerCorrectness())
@@ -187,6 +227,9 @@ def perguntar():
         except AttributeError:
             df = None
 
+    # ------------------------------
+    # Salva no CSV (caminho CSV_PATH)
+    # ------------------------------
     if df is not None:
         cols_to_hide = {"retrieved_contexts", "contexts"}
         show_cols = [c for c in df.columns if c not in cols_to_hide]
@@ -204,7 +247,28 @@ def perguntar():
                     print(f"{metric_name}: {float(row[metric_name]):.3f}")
                 except Exception:
                     print(f"{metric_name}: {row[metric_name]}")
+
+        # extrai com segurança (float se possível)
+        def _getf(r, key):
+            try:
+                return float(r[key]) if key in r and r[key] is not None else ""
+            except Exception:
+                return ""
+
+        metrics_out = {
+            "timestamp": datetime.now().isoformat(timespec="seconds"),
+            "question": pergunta,
+            "answer_len": len(resposta or ""),
+            "context_relevance": _getf(row, "context_relevance"),
+            "faithfulness": _getf(row, "faithfulness"),
+            "answer_relevancy": _getf(row, "answer_relevancy"),
+            "answer_correctness": _getf(row, "answer_correctness"),
+        }
+        append_metrics_csv(metrics_out)
+        print(f"\nMétricas salvas em: {CSV_PATH}")
+
     else:
+        # Fallback sem pandas/dataframe
         try:
             d = eval_result.to_dict()
             for k, v in d.items():
@@ -215,8 +279,32 @@ def perguntar():
                     print(f"{k}: {float(val):.3f}")
                 except Exception:
                     print(f"{k}: {val}")
+
+            def _first(dct, key):
+                v = dct.get(key, "")
+                return v[0] if isinstance(v, list) and v else v
+
+            metrics_out = {
+                "timestamp": datetime.now().isoformat(timespec="seconds"),
+                "question": pergunta,
+                "answer_len": len(resposta or ""),
+                "context_relevance": _first(d, "context_relevance"),
+                "faithfulness": _first(d, "faithfulness"),
+                "answer_relevancy": _first(d, "answer_relevancy"),
+                "answer_correctness": _first(d, "answer_correctness"),
+            }
+            append_metrics_csv(metrics_out)
+            print(f"\nMétricas salvas em: {CSV_PATH}")
+
         except Exception:
+            # última tentativa: apenas registrar linha básica
+            append_metrics_csv({
+                "timestamp": datetime.now().isoformat(timespec="seconds"),
+                "question": pergunta,
+                "answer_len": len(resposta or ""),
+            })
             print(str(eval_result))
+            print(f"\n(Parcial) Métricas salvas em: {CSV_PATH}")
 
 if __name__ == "__main__":
     perguntar()
