@@ -2,7 +2,12 @@ from langchain_chroma.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
-from ragas.metrics import AnswerCorrectness, ContextRelevance, Faithfulness
+from ragas.metrics import ( #Aqui tem vária métricas basta chamá-las e implementá-las
+    AnswerCorrectness,
+    ContextRelevance,
+    Faithfulness,
+    AnswerRelevancy,  # ✅ nova métrica adicionada
+)
 from ragas import evaluate
 from datasets import Dataset
 import os, re, hashlib
@@ -136,13 +141,11 @@ def perguntar():
         print(f"  {i:02d}) score={s:.3f} | source={doc.metadata.get('source')} | page={doc.metadata.get('page')}")
 
     # ==== MOSTRAR O "RESPONSE" DO RESULTADO COM MELHOR SCORE ====
-    # Aqui interpretamos "response do result" como o conteúdo recuperado (page_content) do top-1
     top_doc, top_score = filtrados[0]
     top_source = top_doc.metadata.get("source", "desconhecida")
     top_page = top_doc.metadata.get("page", None)
     print("\nMelhor resultado de recuperação (conteúdo do documento):")
     print(f"source={top_source} | page={top_page} | score={top_score:.3f}")
-    # mostra apenas um trecho para não poluir o terminal
     snippet = top_doc.page_content.strip()
     if len(snippet) > 1200:
         snippet = snippet[:1200] + "...\n[trecho truncado]"
@@ -154,19 +157,19 @@ def perguntar():
     # ==============================
     #     AVALIAÇÃO COM RAGAS
     # ==============================
-    # Não exibir retrieved_contexts; mantemos só as métricas e a resposta
     ragas_contexts = [doc.page_content for doc, _ in filtrados if doc.page_content and doc.page_content.strip()]
 
     ground_truth = os.getenv("EVAL_GROUND_TRUTH", "").strip()
 
-    metrics = [ContextRelevance(), Faithfulness()]
+    # ✅ Incluímos AnswerRelevancy, que avalia se a resposta é relevante para a pergunta
+    metrics = [ContextRelevance(), Faithfulness(), AnswerRelevancy()]
     if ground_truth:
         metrics.append(AnswerCorrectness())
 
     data_dict = {
         "question": [pergunta],
         "answer": [resposta],
-        "contexts": [ragas_contexts]  # necessário para RAGAS, mas NÃO vamos imprimir
+        "contexts": [ragas_contexts]
     }
     if ground_truth:
         data_dict["ground_truth"] = [ground_truth]
@@ -175,7 +178,6 @@ def perguntar():
     eval_result = evaluate(eval_ds, metrics=metrics)
 
     print("\nMétricas do RAGAS:")
-    # tentar dataframe; ocultar retrieved_contexts
     df = None
     try:
         df = eval_result.to_pandas()
@@ -186,27 +188,23 @@ def perguntar():
             df = None
 
     if df is not None:
-        # remove colunas que não queremos mostrar
         cols_to_hide = {"retrieved_contexts", "contexts"}
         show_cols = [c for c in df.columns if c not in cols_to_hide]
 
-        # renomeia nv_*
         rename_map = {c: c.replace("nv_", "") for c in show_cols if c.startswith("nv_")}
         df = df.rename(columns=rename_map)
         show_cols = [rename_map.get(c, c) for c in show_cols]
 
         row = df.iloc[0]
-        # exibe apenas as colunas selecionadas
-        for metric_name in show_cols:
-            val = row.get(metric_name, None)
-            if val is None:
-                continue
-            try:
-                print(f"{metric_name}: {float(val):.3f}")
-            except Exception:
-                print(f"{metric_name}: {val}")
+        metric_order = ["context_relevance", "faithfulness", "answer_relevancy", "answer_correctness"]
+
+        for metric_name in metric_order:
+            if metric_name in row:
+                try:
+                    print(f"{metric_name}: {float(row[metric_name]):.3f}")
+                except Exception:
+                    print(f"{metric_name}: {row[metric_name]}")
     else:
-        # fallback: dicionário, mas sem contexts
         try:
             d = eval_result.to_dict()
             for k, v in d.items():
@@ -222,4 +220,4 @@ def perguntar():
 
 if __name__ == "__main__":
     perguntar()
-    #init_db(echo=False)  # cria tabela se não existir
+    print("Fim de programa")
