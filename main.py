@@ -14,8 +14,7 @@ import os, re, hashlib
 from datetime import datetime
 import csv, pathlib
 
-# Caso use, mantenha as importações abaixo
-from storage import init_db, save_rag_run  # (não usados diretamente neste script)
+from storage import init_db, save_rag_run  
 
 load_dotenv()
 
@@ -168,7 +167,7 @@ def perguntar():
 
     modelo = ChatOpenAI(
         model=os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini"),
-        temperature=0.1,
+        temperature=0.5,
         max_tokens=400,
         frequency_penalty=0.2,
     )
