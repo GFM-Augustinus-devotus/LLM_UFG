@@ -89,3 +89,4 @@ timestamp,question,answer_len,context_relevance,faithfulness,answer_relevancy,an
 2025-10-06T19:44:36,Em que circunstâncias a carga horária de um estágio curricular não obrigatório pode ser validada como Atividade Curricular de Extensão (ACEx)?,464,1.0,1.0,0.9770379885788444,
 2025-10-06T19:45:44,"Quais são as causas de interrupção de um estágio, tanto obrigatório quanto não obrigatório, conforme o regulamento?",794,1.0,1.0,0.9411374163553812,
 2025-10-06T19:46:42,"Como é calculado o Índice de Prioridade (IP) para a solicitação de matrícula, e quais são os critérios de desempate utilizados?",576,1.0,1.0,0.9183501757811724,
+2025-10-06T20:52:38,"Quais são as causas de interrupção de um estágio, tanto obrigatório quanto não obrigatório, conforme o regulamento?",694,1.0,1.0,0.9414343431881781,
