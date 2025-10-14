@@ -130,7 +130,7 @@ def perguntar():
         score_norm = normalize_score_to_01(score)
         pares_doc_score.append((doc, score_norm))
 
-    THRESHOLD = 0.40
+    THRESHOLD = 0.10
     filtrados = [(d, s) for d, s in pares_doc_score if s >= THRESHOLD]
 
     if not filtrados:
