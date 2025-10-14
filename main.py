@@ -25,7 +25,7 @@ EMBED_MODEL = "text-embedding-3-small"
 SYSTEM_MSG = (
     "Você é um assistente de RAG. Regras:\n"
     "1) Responda APENAS com base no contexto fornecido.\n"
-    '2) Se a resposta não estiver no contexto, diga exatamente: "Não sei a resposta.".\n'
+    "2) Tente responder todas as perguntas.\n"
     "3) Responda uma ÚNICA vez, de forma concisa, sem repetir frases ou parágrafos.\n"
     "4) Estruture em tópicos curtos quando houver etapas/regras.\n"
     "5) Inclua fontes citando arquivo e página quando possível."
@@ -130,7 +130,7 @@ def perguntar():
         score_norm = normalize_score_to_01(score)
         pares_doc_score.append((doc, score_norm))
 
-    THRESHOLD = 0.40
+    THRESHOLD = 0.10
     filtrados = [(d, s) for d, s in pares_doc_score if s >= THRESHOLD]
 
     if not filtrados:
