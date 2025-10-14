@@ -1,0 +1,414 @@
+timestamp,question,answer,answer_length,context_relevance,faithfulness,answer_relevancy
+2025-10-06 16:50:48,"Qual é a carga horária máxima semestral atribuída a um professor tutor para a atividade de orientação, e qual é o caráter dessa atividade?"," - **Carga horária máxima semestral**: 60 horas-aula.
+- **Caráter da atividade**: Atividade de orientação didática de caráter voluntário.",240,1,1,"0,85"
+2025-10-06 16:56:10,"De acordo com o Art. 5º, quais são as responsabilidades do aluno que participa do Programa de Tutoria?"," As responsabilidades do aluno que participa do Programa de Tutoria, conforme o Art. 5º, são:
+
+I. Apresentar e discutir com o professor tutor, a cada período letivo, seu plano de pré-matrícula e matrícula, além de informar sua meta para integralização curricular.
+II. Participar das atividades programadas pelo professor tutor.
+III. Reportar ao professor tutor fatos relevantes da sua vida acadêmica quando necessário ou solicitado.
+IV. Participar das atividades de avaliação do programa de tutoria quando solicitado.
+V. Manter seu endereço eletrônico atualizado junto à coordenação do programa.",695,1,1,"0,964"
+2025-10-06 17:02:26,"Segundo a Resolução, quem é o responsável por designar os professores tutores e solicitar a emissão de portaria para a alocação dos alunos?", O responsável por designar os professores tutores e solicitar a emissão de portaria para a alocação dos alunos é a Coordenação do programa de tutoria.,254,1,1,"0,981"
+2025-10-06 17:03:39,Quais são os requisitos que um docente deve atender para poder exercer a atividade de tutoria?," Os requisitos que um docente deve atender para exercer a atividade de tutoria são:
+
+- Ser docente lotado na EMC/UFG.
+- Possuir formação em uma das especialidades da Engenharia.
+- Realizar a adesão ao programa de tutoria por meio de ficha de inscrição.",354,1,1,"0,997"
+2025-10-06 17:04:48,Em que circunstâncias um aluno pode solicitar a troca de tutor e o desligamento do programa?," - **Troca de Tutor**: O aluno pode solicitar a troca de tutor após 2 anos de participação no programa, sem necessidade de justificativa, por escrito e em formato eletrônico. (Fonte: Documentos_Importantes\01._Tutoria_-_Resolucao_CD_EMC_032012_Programa_Tutoria.pdf, página: 1)
+
+- **Desligamento do Programa**: O aluno pode solicitar seu desligamento do programa a qualquer momento, por escrito e em formato eletrônico. ",422,1,1,"0,869"
+2025-10-06 17:05:50,Quando a Universidade Federal de Goiás (UFG) foi criada e quais cinco escolas superiores foram unidas para sua fundação?," - A Universidade Federal de Goiás (UFG) foi criada em 14 de dezembro de 1960.
+- As cinco escolas superiores que foram unidas para sua fundação são:
+  1. Escola de Agronomia e Veterinária
+  2. Escola de Engenharia
+  3. Faculdade de Filosofia
+  4. Faculdade de Ciências Econômicas
+  5. Faculdade de Direito",231,1,1,"0,952"
+2025-10-06 17:06:33,"De acordo com a Constituição Federal de 1988, quais tipos de autonomia a UFG possui e qual princípio rege seu funcionamento?"," - **Tipos de autonomia da UFG**:
+  - Didático-científica
+  - Administrativa
+  - Gestão financeira e patrimonial
+
+- **Princípio que rege seu funcionamento**:
+  - Indissociabilidade entre ensino, pesquisa e extensão",296,1,1,"0,901"
+2025-10-06 17:07:12,Quais foram os dois principais programas ou políticas de expansão da UFG mencionados no documento?," Os dois principais programas ou políticas de expansão da UFG mencionados no documento são:
+
+1. **Política para a formação de professores(as) da educação básica** - Estabelecida pela Resolução CEPEC/UFG nº 1541/2017.
+2. **Regulamento Geral dos Cursos de Graduação (RGCG)** - Aprovado pela Resolução CEPEC/UFG nº 1791/2022.",396,0,"0,666","0,982"
+2025-10-06 17:07:57,O que aconteceu com as antigas Regionais Catalão e Jataí da UFG em 2018?," Em 2018, as antigas Regionais Catalão e Jataí da UFG foram revogadas pela Resolução CONSUNI-CEPEC-CC/UFG Nº 01, de 2021. A Regional Jataí foi especificamente mencionada como revogada, enquanto a Regional Catalão continuou a existir, mas com alterações na sua estrutura administrativa.",364,1,"0,25","0,991"
+2025-10-06 17:08:28,"Segundo os dados comparativos de 2008 a 2019, qual foi o aumento percentual no número de discentes de graduação e de pós-graduação stricto sensu na UFG?", Não sei a resposta.,19,0,0,0
+2025-10-06 17:09:14,"Como o Art. 2º da Portaria define nepotismo, e qual Súmula vinculante é citada como base para essa definição?"," - **Definição de nepotismo (Art. 2º)**: Nepotismo é a nomeação de cônjuge, companheiro ou parente em linha reta, colateral ou por afinidade, até o terceiro grau, da autoridade nomeante ou de servidor investido em cargo de direção, chefia ou assessoramento, para cargos em comissão ou funções gratificadas na administração pública.
+
+- **Súmula vinculante citada**: A definição se baseia na **Súmula vinculante nº 13**.",487,1,"0,666","0,853"
+2025-10-06 17:10:02,"De acordo com o Art. 3º, quais são algumas das vedações expressas em relação à contratação ou designação de familiares no âmbito da UFG?","De acordo com o Art. 3º, as vedações em relação à contratação ou designação de familiares no âmbito da UFG incluem:
+
+- Nomeação, designação ou contratação de familiares do(a) Reitor(a) e de ocupantes de funções de confiança para:
+  - Função de confiança, direção, chefia ou assessoramento.
+  - Atendimento à necessidade temporária de excepcional interesse público.
+
+- Contratação direta de pessoa jurídica onde haja familiar em cargo de direção ou função comissionada na UFG.
+
+- Prestação de serviços por familiares em contratos com empresas terceirizadas.
+
+- Concessão de bolsas institucionais a familiares do Coordenador/Gestor do projeto, sem processo seletivo.
+
+- Participação de familiares na orientação de trabalhos científicos e em bancas de concurso público.",879,1,1,"0,979"
+2025-10-06 17:10:52,O Art. 5º lista exceções às vedações de nepotismo. Qual é uma das exceções relacionadas a cargos de maior hierarquia e qual é a condição imposta para que ela seja válida?,"Uma das exceções relacionadas a cargos de maior hierarquia é a nomeação de pessoas para a ocupação de cargos em comissão de nível hierárquico mais alto que o dos agentes públicos 
+referidos no inciso I do artigo 3º. A condição imposta para que essa exceção seja válida é que a contratação não deve caracterizar ajuste prévio para burlar a vedação do nepotismo",395,1,1,"0,903"
+2025-10-06 17:12:20,"Qual setor da UFG é responsável por receber os pedidos de designação/nomeação de servidores, e que tipo de declarações são exigidas dos indicados para esses cargos/funções?"," - **Setor responsável**: Pró-Reitoria de Gestão de Pessoas (Propessoas).
+- **Declarações exigidas**:
+  1. Declaração de Vínculo Familiar para Fins de Apuração de Situação de Nepotismo (Anexo I).
+  2. Declaração de Ciência sobre Situações de Nepotismo (Anexo II).",333,1,"0,833","0,788"
+2025-10-06 17:13:00,"Quais são as responsabilidades da Ouvidoria, da Auditoria Interna e da Coordenação de Processo Administrativo (CDPA) no combate ao nepotismo, conforme a Portaria?"," - **Ouvidoria**: Atua como canal de recebimento e análise de denúncias de nepotismo (Fonte: Documentos_Importantes\Portaria_Nepotismo(1).pdf, página 2).
+
+- **Auditoria Interna**: Deve incluir o cumprimento da Portaria e do Decreto nº 7.203/2010 em sua programação anual de trabalho (Fonte: Documentos_Importantes\Portaria_Nepotismo(1).pdf, página 2).
+
+- **Coordenação de Processo Administrativo (CDPA)**: Realiza os procedimentos de apuração dos casos de nepotismo conforme a legislação pertinente",465,1,1,"0,933"
+2025-10-06 17:13:46,"De acordo com o Sumário do documento, quais são os cinco títulos principais que organizam a estrutura e o funcionamento da UFG?"," Os cinco títulos principais que organizam a estrutura e o funcionamento da UFG são:
+
+1. DA UNIVERSIDADE, SEUS PRINCÍPIOS E SUAS FINALIDADES
+2. DA ESTRUTURA ACADÊMICA E ADMINISTRATIVA
+3. (não especificado no contexto)
+4. (não especificado no contexto)
+5. (não especificado no contexto)",367,1,0,0
+2025-10-06 17:14:34,O Estatuto e Regimento Geral detalham a estrutura acadêmica e administrativa da universidade. Quais são os principais conselhos e órgãos que compõem a Administração Central da UFG?," Os principais conselhos e órgãos que compõem a Administração Central da UFG são:
+
+- Assembleia Universitária
+- Conselho de Integração Universidade-Sociedade
+- Conselho Universitário
+- Conselho de Ensino, Pesquisa, Extensão e Cultura
+- Conselho de Curadores
+- Reitoria",388,1,1,"0,937"
+2025-10-06 17:15:17,"Quais são os três grupos que formam a Comunidade Universitária da UFG, conforme listado no Título IV do Regimento Geral?"," Os três grupos que formam a Comunidade Universitária da UFG, conforme listado no Título IV do Regimento Geral, são:
+
+1. Professores
+2. Estudantes
+3. Técnico-administrativos em educação",213,1,0,"0,959"
+2025-10-06 17:16:28,"Com base na Portaria nº 1.150 de 7 de novembro de 1996, quem foi o Ministro de Estado da Educação e do Desporto responsável por aprovar as alterações do Estatuto da UFG?"," - O Ministro de Estado da Educação e do Desporto responsável por aprovar as alterações do Estatuto da UFG foi Paulo Renato Souza.
+- Referência: Portaria nº 1.150 de 7 de novembro de 1996, Documento: Documentos_Importantes\Regimento.pdf, página 91.",188,1,"0,5","0,895"
+2025-10-06 17:17:31,Quando o Regimento Geral aprovado em 1996 entrou em vigor e o que aconteceu com as disposições anteriores?," - O Regimento Geral aprovado em 1996 entrou em vigor na data de publicação no Diário Oficial da União.
+- As disposições anteriores foram revogadas.",206,1,"0,5","0,883"
+2025-10-06 17:18:22,Qual é o objetivo principal da Resolução EMC Nº 02/2023 e quais cursos ela afeta?," - **Objetivo Principal**: Estabelecer um modelo de alocação de vagas de professores do magistério superior na Escola de Engenharia Elétrica, Mecânica e de Computação (EMC), visando uma política acadêmica voltada para as atividades fins da unidade.
+- **Cursos Afetados**: Os cursos de graduação sob responsabilidade da EMC, que incluem Engenharia Elétrica, Engenharia de Computação e Engenharia Mecânica.",503,0,1,"0,855"
+2025-10-06 17:18:45,"A resolução menciona duas abreviações na tabela, CHA e CHM. Qual é o significado de cada uma delas?",Não sei a resposta.,19,,,
+2025-10-06 17:20:06,"Qual é a carga horária máxima permitida para a participação em um programa de tutoria, e a qual documento essa atividade está relacionada?"," - **Carga horária máxima permitida**: 60 horas-aulas semestrais.
+- **Documento relacionado**: Resolução CD EMC 032012 do Programa de Tutoria. ",245,1,"0,666","0,855"
+2025-10-06 17:20:43,"De acordo com a tabela, quais são as cargas horárias atribuídas (CHA) para a participação em um curso de idiomas e para ser um monitor de disciplina?"," - **Curso de idiomas**: 10 horas (CHA)
+- **Monitor de disciplina**: 20 horas (CHA)",179,1,"0,667","0,879"
+2025-10-06 17:21:10,"Segundo o documento, quem tem a responsabilidade de resolver casos omissos ou não previstos na resolução?",Não sei a resposta.,19,,,
+2025-10-06 17:22:10,Qual é o objetivo principal da Resolução EMC Nº 02/2023?, Não sei a resposta.,19,0,0,0
+2025-10-06 17:26:09,O que a Resolução EMC Nº 02/2023 revoga ou substitui?, A Resolução EMC Nº 02/2023 revoga a Resolução EMC Nº 01/2023 e as disposições em contrário. ,181,1,"0,5","0,937"
+2025-10-06 17:26:32,Qual é a carga horária máxima (CHM) permitida para a participação em seminários e congressos nacionais?,Não sei a resposta.,19,,,
+2025-10-06 17:27:27,"Quantas horas de atividades complementares são creditadas para um membro de uma empresa júnior, e qual é a carga horária máxima permitida para essa atividade?", Não sei a resposta.,19,0,0,0
+2025-10-06 17:27:52,"Quem é o responsável por resolver os casos omissos, ou seja, as situações não previstas na resolução?",Não sei a resposta.,19,,,
+2025-10-06 17:28:25,Qual é o objetivo principal da Resolução CEPEC Nº 1941 e qual resolução ela revoga?,Não sei a resposta.,19,,,
+2025-10-06 17:29:05,"De acordo com o Art. 1º, quais são os objetivos gerais do Programa de Pós-Graduação em Direito e Políticas Públicas para os níveis de Mestrado Profissional e Doutorado Profissional?"," Os objetivos gerais do Programa de Pós-Graduação em Direito e Políticas Públicas são:
+
+- **Mestrado Profissional**:
+  - Formação científica de profissionais do Direito com foco em políticas públicas.
+  - Produção de conhecimento aplicado à prática, visando aprimorar questões concretas em políticas públicas.
+  - Incremento das capacidades institucionais para regulação, implementação, avaliação e controle de políticas públicas.
+
+- **Doutorado Profissional**:
+  - Formação científica avançada voltada para inovação jurídica e desenvolvimento de abordagens vanguardistas.
+  - Incremento inovador das capacidades institucionais para regulação e controle de políticas públicas.
+  - Refinamento da dogmática jurídica das políticas públicas e construção de soluções jurídicas transformadoras.",785,1,1,"0,965"
+2025-10-06 17:29:55,"Segundo o Art. 3º, como se estrutura organizacionalmente o Programa de Pós-Graduação em Direito e Políticas Públicas?"," - O Programa de Pós-Graduação em Direito e Políticas Públicas da UFG (PPGDP/UFG) é estruturado da seguinte forma:
+  1. **Coordenadoria de Pós-graduação (CPG)**: órgão normativo e deliberativo em matérias acadêmicas e administrativas.
+  2. **Coordenação**: órgão executivo da CPG, composta por coordenador(a) e vice-coordenador(a).
+  3. **Secretaria**: órgão de apoio ao Programa, subordinada à Coordenação.
+
+- A constituição da CPG e da Coordenação segue o Regimento Geral da UFG.",540,1,1,"0,938"
+2025-10-06 17:31:49,"Quais são as atribuições da Coordenadoria de Pós-Graduação (CPG), conforme o Art. 5º?"," As atribuições da Coordenadoria de Pós-Graduação (CPG), conforme o Art. 5º, são:
+
+1. Aprovar comissões constituídas por docentes do Programa.
+2. Deliberar sobre alterações no Regulamento ou casos omissos.
+3. Aprovar planejamento anual ou semestral de disciplinas e atividades complementares.
+4. Aprovar Edital de processo seletivo conforme normas institucionais.
+5. Aprovar nomes de docentes para a Comissão de Seleção e comissões examinadoras.",518,1,1,"0,998"
+2025-10-06 17:32:50,O documento lista três categorias de docentes que podem ser credenciados no programa. Quais são elas e qual a principal característica de cada uma?,"As três categorias de docentes que podem ser credenciados no programa são:
+
+1. **Docentes Permanentes**
+   - Participam de forma sistemática do desenvolvimento de projetos de pesquisa, atividades de ensino ou extensão e/ou orientação de estudantes.
+
+2. **Docentes Visitantes**
+   - Também participam das atividades do programa, mas não possuem vínculo com a UFG.
+
+3. **Docentes/Pesquisadores(as)**
+   - Podem solicitar credenciamento em fluxo contínuo, sendo avaliados pela Coordenadoria (CPG) conforme critérios estabelecidos.",597,0,"0,25","0,946"
+2025-10-06 17:33:16,"Qual é o objetivo principal da Resolução CEPEC Nº 1943, e qual documento ela revoga?",Não sei a resposta.,19,,,
+2025-10-06 17:33:53,"De acordo com o Art. 3º do documento, qual é a estrutura organizacional e funcional do Programa de Pós-Graduação em Sociologia?"," A estrutura organizacional e funcional do Programa de Pós-Graduação em Sociologia é composta por:
+
+- **Coordenadoria de Pós-graduação (CPG)**: órgão normativo e deliberativo em matérias acadêmicas e administrativas.
+- **Coordenação**: órgão executivo da CPG, constituído pelo(a) coordenador(a) e vice-coordenador(a).
+- **Secretaria**: órgão de apoio ao PPG, subordinado à Coordenação.",454,1,1,"0,876"
+2025-10-06 17:34:53,"Segundo o Art. 5º, quais são as atribuições da Coordenadoria de Pós-Graduação (CPG)?"," As atribuições da Coordenadoria de Pós-Graduação (CPG) são:
+
+1. Aprovar comissões constituídas por docentes do Programa.
+2. Deliberar sobre alterações no Regulamento ou casos omissos.
+3. Aprovar planejamento anual ou semestral de disciplinas e atividades complementares.
+4. Aprovar Edital de processo seletivo conforme normas institucionais.
+5. Aprovar nomes de docentes para a Comissão de Seleção e comissões examinadoras.",497,1,1,"0,972"
+2025-10-06 17:35:36,O Art. 11 define três categorias de docentes que podem ser credenciados no programa. Quais são essas categorias e quais são os critérios para ser um docente permanente?," As três categorias de docentes que podem ser credenciados no programa são:
+
+1. **Docentes Permanentes**:
+   - Vínculo funcional com a UFG.
+   - Desenvolvem atividades de ensino na Pós-Graduação.
+   - Participam de projetos de pesquisa do Programa.
+   - Orientam discentes de Mestrado e/ou Doutorado.
+
+2. **Docentes Visitantes**:
+   - Vínculo funcional com outras instituições.
+   - Liberados para colaborar em projetos de pesquisa e/ou atividades de ensino.
+   - Atuação viabilizada por contrato temporário ou bolsa.
+
+3. **Docentes Colaboradores**:
+   - Não atendem a todos os requisitos para serem permanentes ou visitantes.
+   - Participam sistematicamente das atividades do Programa, independentemente do vínculo com a UFG.",899,1,1,"0,926"
+2025-10-06 17:36:13,Quais são as regras para a substituição de um orientador por um discente e em que circunstâncias essa troca é permitida?," - A substituição do(a) orientador(a) pode ser solicitada pelo(a) discente apenas uma vez.
+- A troca está condicionada à disponibilidade de um novo orientador no PPG em Sociologia.
+- Não pode ser efetivada após 50% do tempo regular do curso, exceto em situações excepcionais.
+- A substituição deve ser formalmente aprovada pela CPG.",388,1,1,"0,904"
+2025-10-06 17:36:56,Qual é o objetivo principal da Resolução CONSUNI Nº 322 e qual novo curso ela cria?,Não sei a resposta.,19,0,0,0
+2025-10-06 17:37:29,"De acordo com o Art. 1º, qual é o grau acadêmico e a modalidade do novo curso?",Não sei a resposta.,19,0,0,0
+2025-10-06 17:37:46,Onde será ofertado o novo curso e a partir de que ano letivo?,Não sei a resposta.,19,,,
+2025-10-06 17:38:34,Quantas vagas anuais serão ofertadas para o novo curso e como elas serão distribuídas entre os turnos?,Não sei a resposta.,19,0,0,0
+2025-10-06 17:39:19,Quem é a autoridade que assina digitalmente o documento e qual é a sua posição na Universidade Federal de Goiás?," - A autoridade que assina digitalmente o documento é a Profa. Angelita Pereira de Lima.
+- Sua posição na Universidade Federal de Goiás é Reitora.",221,1,1,"0,858"
+2025-10-06 17:40:15,"Qual é o objetivo principal da Resolução CONSUNI Nº 323, de acordo com o documento?"," O objetivo principal da Resolução CONSUNI Nº 323 é estabelecer normas gerais para o afastamento de docentes e servidores técnico-administrativos, além de regular atividades acadêmicas e didático-científicas da Universidade.",283,1,"0,5","0,992"
+2025-10-06 17:40:58,Qual é o grau acadêmico e a modalidade do novo curso de Graduação em Gestão de Saúde Digital?," - Grau acadêmico: Bacharelado
+- Modalidade: Presencial
+- Local: Câmpus Cidade Ocidental
+- Início: Ano letivo de 2025",193,1,1,"0,786"
+2025-10-06 17:41:13,Em que local e a partir de que ano letivo o novo curso será oferecido?,Não sei a resposta.,19,,,
+2025-10-06 17:41:52,Quantas vagas anuais serão disponibilizadas para o curso e como elas serão distribuídas entre os turnos?,Não sei a resposta.,19,0,0,0
+2025-10-06 17:43:05,Quem é a Reitora que assinou eletronicamente o documento?," - A Reitora que assinou eletronicamente o documento é Profa. Angelita Pereira de Lima.
+- A assinatura ocorreu em 27/02/2025, às 22:01 ",163,1,"0,5","0,874"
+2025-10-06 17:43:43,"Qual é o objetivo principal da Resolução CONSUNI Nº 324/2025, e que Conselho ela visa compor?"," - **Objetivo Principal**: Definir as Organizações Governamentais e Não-Governamentais que comporão o Conselho de Integração Universidade-Sociedade.
+- **Conselho a ser composto**: Conselho de Integração Universidade-Sociedade.",302,1,1,"0,871"
+2025-10-06 17:44:19,"Segundo o Artigo 20 do Estatuto da UFG, qual a finalidade do Conselho de Integração Universidade-Sociedade?"," A finalidade do Conselho de Integração Universidade-Sociedade, segundo o Artigo 20 do Estatuto da UFG, é:
+
+- Conhecer o plano de gestão da Universidade, suas políticas, estratégias gerenciais, projetos e programas.
+- Discutir a política científica, cultural, artística e tecnológica da Universidade.
+- Examinar as demandas existentes na sociedade, propondo novos empreendimentos, parcerias e atividades a serem desenvolvidas com diversos setores do poder público e da sociedade civil.",543,1,1,"0,986"
+2025-10-06 17:44:47,O documento lista sete organizações que comporão o Conselho. Quais são elas?,Não sei a resposta.,19,,,
+2025-10-06 17:45:38,Qual é a duração do mandato dos representantes das organizações no Conselho e quantas reconduções são permitidas?," - Duração do mandato:
+  - 1 ano para representantes estudantis e externos.
+  - 2 anos para representantes docentes e técnico-administrativos.
+
+- Reconduções permitidas:
+  - Uma recondução para mandatos de até dois anos; vedada nos demais casos.",304,1,1,"0,914"
+2025-10-06 17:46:45,Quem foi a autoridade que assinou a Resolução e qual é o seu cargo?,Não sei a resposta.,19,,,
+2025-10-06 17:47:08,Qual é o objetivo principal da Resolução EMC 03/2024 e qual órgão foi responsável pela sua criação?,Não sei a resposta.,19,,,
+2025-10-06 17:47:42,"De acordo com o Anexo I, qual é a carga horária mínima semanal de aulas que um docente deve ter a cada semestre letivo?"," - Carga horária mínima semanal para docentes em regime de 20 horas: **8 horas**.
+- Carga horária mínima semanal para docentes em regime de 40 horas: **8 horas**",280,1,"0,5","0,904"
+2025-10-06 17:48:56,O documento lista algumas atividades que não são consideradas para o cálculo da carga horária. Quais são elas?," As atividades que não são consideradas para o cálculo da carga horária são:
+
+- Atividades Curriculares da Extensão (ACEx) - Componente Curricular (256h)
+- Prática como Componente Curricular (PCC) (400h)
+
+Essas cargas horárias já estão incluídas em componentes curriculares de Núcleo Comum (NC) e Núcleo Específico Obrigatório (NEOb).",409,1,"0,25","0,961"
+2025-10-06 17:49:49,"Segundo o Anexo I, em que ordem as turmas de disciplinas são distribuídas aos docentes?"," A distribuição das turmas de disciplinas aos docentes ocorre na seguinte ordem:
+
+1. **Disciplinas obrigatórias** dos cursos de graduação e dos programas de pós-graduação stricto sensu.
+2. **Disciplinas optativas**.
+3. **Disciplinas de núcleo livre**.",330,1,1,"0,961"
+2025-10-06 17:50:27,"Conforme a Tabela 1 do Anexo II, qual a carga horária semanal atribuída a um docente que ocupa o cargo de Direção da Unidade ou de Coordenador de curso de graduação?",Não sei a resposta.,19,0,0,0
+2025-10-06 17:50:48,Qual é o principal objetivo da Resolução EMC Nº 03/2023 e quem é responsável pelo gerenciamento do modelo?,Não sei a resposta.,19,,,
+2025-10-06 17:51:30,"De acordo com o Art. 2º, qual é a pontuação de uma vaga em regime de 20 horas, 40 horas e 40 horas com dedicação exclusiva?"," - Vaga em regime de 20 horas: 0,58 pontos
+- Vaga em regime de 40 horas: 1,0 ponto
+- Vaga em regime de 40 horas com dedicação exclusiva: 1,68 pontos",247,1,"0,75","0,831"
+2025-10-06 17:52:22,Qual é a fonte de dados utilizada para a aplicação do modelo de alocação de vagas?," A fonte de dados utilizada para a aplicação do modelo de alocação de vagas é composta pelas áreas do conhecimento da Escola de Engenharia Elétrica, Mecânica e de Computação da Universidade Federal de Goiás (EMC/UFG), que incluem:
+
+1. Computação
+2. Controle e Automação
+3. Eletrônica
+4. Energia
+5. Materiais e Processos de Fabricação
+6. Projetos de Sistemas Mecânicos
+7. Telecomunicações
+8. Térmica e Fluidos",497,1,"0,9","0,807"
+2025-10-06 17:53:13,Quais são as regras para a mudança de área de um docente e de uma disciplina?," Regras para mudança de área de um docente e de uma disciplina:
+
+### Mudança de Área de uma Disciplina
+- Permitida somente após a execução do modelo.
+- Interstício mínimo de 2 anos na área.
+- Necessária aprovação do Conselho Diretor da EMC/UFG.
+
+### Mudança de Área de um Docente
+- Interstício mínimo de 3 anos na área.",409,1,1,"0,998"
+2025-10-06 17:53:58,"Segundo o documento, a carga horária de quais tipos de disciplinas não será computada?"," A carga horária de disciplinas com caráter de orientação não será computada. Exemplos incluem:
+
+- Projeto Final de Curso
+- Estágio
+- Projeto Orientado
+- Estudos Especiais
+- Estudos Dirigidos",320,1,1,"0,938"
+2025-10-06 17:54:43,Qual é o propósito da Resolução EMC N° 01/2024?," O propósito da Resolução EMC N° 01/2024 é revogar a Resolução EMC N° 01/2023 e estabelecer diretrizes para a Coordenação de Programas e Projetos de Graduação da EMC, com decisões 
+passíveis de recurso ao Conselho Diretor da EMC. ",317,0,"0,25",1
+2025-10-06 17:55:47,Quais são os dois tipos de vagas de monitoria disponíveis e quem as oferece?," - Tipos de vagas de monitoria: 
+  1. Remunerada
+  2. Voluntária
+
+- Quem oferece: 
+  - A Escola de Engenharia Elétrica, Mecânica e de Computação (EMC) da Universidade Federal de Goiás. ",275,1,"0,666","0,867"
+2025-10-06 17:56:30,Quais são os critérios para a distribuição de vagas de monitoria remunerada?," Os critérios para a distribuição de vagas de monitoria remunerada são:
+
+1. **Distribuição Equitativa**: As vagas devem ser igualmente distribuídas entre os cursos de graduação da unidade.
+2. **Limite de Vagas**: Cada componente curricular pode concorrer a, no máximo, uma vaga remunerada por semestre.
+3. **Indicação de Componentes**: Os componentes que receberão vagas remuneradas são indicados semestralmente pelo Núcleo Docente Estruturante (NDE) e/ou pela Coordenação dos cursos de graduação.
+4. **Prova Eliminatória**: Os Planos de Trabalho que solicitarem monitoria remunerada devem incluir uma prova escrita eliminatória, com nota mínima de 6,0 para classificação.",857,1,1,1
+2025-10-06 17:57:09,O que é necessário para que um Plano de Trabalho que solicita monitoria remunerada seja aprovado?," Para que um Plano de Trabalho que solicita monitoria remunerada seja aprovado, é necessário:
+
+- **Cadastro no SIGAA**: Os coordenadores devem cadastrar os Planos de Trabalho no sistema.
+- **Aprovação do Conselho**: O plano deve ser aprovado pelo Conselho Diretor da unidade.
+- **Modelo de Formulário**: Apresentar o plano de acordo com o modelo de formulário próprio, incluindo:
+  - Carga horária
+  - Disponibilidade de horários
+  - Principais atividades
+- **Critérios de Seleção**: Podem ser definidos critérios adicionais conforme o edital de monitoria.",645,1,1,"0,983"
+2025-10-06 17:57:25,"Quem é o responsável por resolver casos não previstos (omissos) na resolução, e o que pode ser feito se alguém discordar da decisão?",Não sei a resposta.,19,,,
+2025-10-06 19:22:14,Qual é a composição e as responsabilidades da Coordenadoria de Projeto Final (CPF)?," - **Composição da Coordenadoria de Projeto Final (CPF)**:
+  - Formada pelos docentes coordenadores de Projeto Final de cada curso de graduação da EMC/UFG.
+  - Subordinada à Diretoria da EMC/UFG.
+  - Possibilidade de designação de um vice-coordenador para auxiliar e substituir o coordenador em impedimentos.
+
+- **Responsabilidades da CPF**:
+  1. Administrar a realização do Projeto Final do respectivo curso.
+  2. Cumprir a legislação vigente.
+  3. Incentivar docentes a orientarem Projetos Finais.
+  4. Fornecer instruções sobre o uso do processo SEI e armazenamento online.
+  5. Conferir se os estudantes estão matriculados corretamente na disciplina de Projeto Final.
+  6. Divulgar informações sobre os Projetos Finais, incluindo títulos, estudantes, orientadores e datas de defesa.
+  7. Prestar informações a estudantes e professores sobre aspectos administrativos da disciplina.
+  8. Auxiliar na formatação dos textos para publicação na biblioteca da UFG.
+  9. Verificar o arquivamento dos documentos relativos à disciplina.",968,1,1,"0,928"
+2025-10-06 19:27:43,"De acordo com o documento, quais são as formas de aproveitamento da disciplina de Projeto Final de Curso?"," As formas de aproveitamento da disciplina de Projeto Final de Curso incluem:
+
+- Desenvolvimento de um projeto técnico-científico integrando conhecimentos do curso.
+- Entrega de um plano de trabalho oficializado.
+- Apresentação e defesa do trabalho em sessão pública para uma banca examinadora.
+- Possibilidade de aproveitamento por meio de acordos internacionais.
+- Publicação de artigo científico resultante de atividade de Iniciação Científica ou Tecnológica, com o estudante como primeiro autor (Art. 11 e Art. 12).",456,1,"0,857","0,975"
+2025-10-06 19:28:54,"Quais são os requisitos de composição para as bancas examinadoras dos cursos de Engenharia Elétrica, Engenharia Mecânica e Engenharia de Computação?"," Requisitos de composição para as bancas examinadoras:
+
+**Engenharia Elétrica e Engenharia Mecânica:**
+- Mínimo: 3 membros
+- Máximo: 4 membros
+- Um membro deve ser o professor orientador
+- 1 membro suplente
+- Pelo menos 1 membro deve ser professor lotado na EMC/UFG
+
+**Engenharia de Computação:**
+- Mínimo: 2 membros
+- Máximo: 3 membros",440,1,1,"0,907"
+2025-10-06 19:29:48,Quais são os prazos para a entrega do plano de trabalho e para a solicitação de defesa do Projeto Final de Curso?," - **Prazo para entrega do plano de trabalho**: até 15 dias após o início do semestre letivo (Fonte: Documentos_Importantes\Resolucao_PFC_2024-final_assinado.pdf, página 3).
+- **Prazo para solicitação de defesa do Projeto Final de Curso**: no máximo 70 dias após o início do semestre letivo",372,1,"0,5","0,906"
+2025-10-06 19:31:22,Como é calculada a nota final da disciplina Projeto Final de Curso para os diferentes cursos de Engenharia?," A nota final da disciplina Projeto Final de Curso para os diferentes cursos de Engenharia é calculada da seguinte forma:
+
+### Engenharia Elétrica e Engenharia Mecânica
+- **Fórmula**: NF = 0,1 × NPT + 0,45 × NTE + 0,45 × NAA
+  - **NPT**: Média das notas sobre o plano de trabalho.
+  - **NTE**: Média das notas sobre o trabalho escrito.
+  - **NAA**: Média das notas sobre a apresentação e arguição.
+
+### Engenharia de Computação
+- **Fórmula**: NF = 0,3 × NPT + 0,7 × NAA",534,1,"0,857","0,996"
+2025-10-06 19:32:38,Quais são as finalidades da Universidade Federal de Goiás (UFG) de acordo com o Art. 5° e o Art. 6° do Estatuto?," As finalidades da Universidade Federal de Goiás (UFG) de acordo com o Art. 5° e o Art. 6° do Estatuto são:
+
+- **Art. 5°**:
+  - Transmitir, sistematizar e produzir conhecimentos.
+  - Ampliar e aprofundar a formação humana, profissional, crítica e reflexiva.
+  - Promover uma sociedade mais justa e soluções democráticas para problemas nacionais.
+
+- **Art. 6°**: Para alcançar suas finalidades, a UFG:
+  1. Promoverá todas as formas de conhecimento por meio do ensino, pesquisa e extensão.
+  2. Ministrará ensino superior visando à formação para investigação, magistério e diversas atividades culturais, políticas e sociais.
+  3. Manterá interação com a sociedade através da articulação com entidades públicas e privadas.
+  4. Valorizará e divulgará a cultura nacional.
+  5. Cooperará com poderes públicos e instituições científicas, culturais e educacionais.
+  6. Desempenhará outras atividades na área de sua competência.",1062,1,1,"0,99"
+2025-10-06 19:33:54,"De acordo com o documento, qual a composição e as finalidades não deliberativas do Conselho de Integração Universidade-Sociedade?"," - **Composição do Conselho de Integração Universidade-Sociedade**:
+  - Reitor (Presidente)
+  - Vice-Reitor e Pró-Reitores
+  - 3 representantes de cada um dos Conselhos: Universitário, Ensino, Pesquisa, Extensão e Cultura, e de Curadores
+  - Diretores das Regionais e câmpus fora da RMG
+  - Representantes do Poder Executivo Estadual, Assembleia Legislativa Estadual e Prefeituras dos municípios com câmpus
+
+- **Finalidades não deliberativas**:
+  1. Conhecer o plano de gestão da Universidade, suas políticas, estratégias gerenciais, projetos e programas
+  2. Discutir a política científica, cultural, artística e tecnológica da Universidade
+  3. Examinar as demandas existentes na sociedade, propondo novos empreendimentos, parcerias e atividades com setores do poder público e da sociedade civil",971,1,1,"0,881"
+2025-10-06 19:35:06,"Quais são as competências do Conselho Universitário, conforme o Art. 21, sobre a criação, alteração ou extinção de câmpus e sobre a autorização de bens patrimoniais?"," As competências do Conselho Universitário, conforme o Art. 21, incluem:
+
+- **Criação, alteração ou extinção de câmpus**: Aprovação de propostas relacionadas a esses aspectos.
+- **Autorização de bens patrimoniais**:
+  - Autorizar a alienação e oneração de bens patrimoniais imóveis.
+  - Aceitar legados e doações feitas à Universidade.",609,1,"0,8","0,982"
+2025-10-06 19:36:06,"O que a Resolução - CONSUNI/CEPEC/CC N° 02/2013 estabelece sobre a criação, funcionamento e vínculo dos Núcleos de Estudos, Pesquisa e Extensão?"," A Resolução - CONSUNI/CEPEC/CC N° 02/2013 estabelece que:
+
+- **Criação**: A Universidade pode instituir Núcleos de Estudos, Pesquisa e Extensão como organismos acadêmicos.
+- **Funcionamento**: Cada Núcleo terá um Coordenador Acadêmico responsável por suas atividades e funcionará por um período inicial de 2 anos, com possibilidade de renovação mediante relatório de atividades.
+- **Vínculo**: Os Núcleos devem se vincular às Unidades Acadêmicas ou outras unidades específicas da Universidade.",780,1,"0,875","0,948"
+2025-10-06 19:37:24,"Como é calculada a representatividade de professores, técnico-administrativos e estudantes da Câmara de Graduação do CEPEC, segundo o Art. 27?"," - **Representatividade de Professores**: Eleitos por seus pares, em número que atende ao § 4º do art. 7º do Estatuto, sem número inferior ao definido nos incisos VII e VIII.
+- **Representatividade de Técnico-Administrativos**: Correspondente a 15% da totalidade dos membros nominados nos incisos I a V, desprezada a fração.
+- **Representatividade de Estudantes**: Também correspondente a 15% da totalidade dos membros nominados nos incisos I a V, desprezada a fração.",588,1,1,"0,942"
+2025-10-06 19:38:15,"Qual é a composição mínima da Coordenadoria de Estágio, Projeto Final de Curso e Monitoria (CEPFM), e quem a indica?","Resposta da IA:
+ - **Composição mínima da CEPFM**: 3 (três) docentes com dedicação exclusiva.
+- **Indicação**: Pela Diretoria da EMC, com aprovação do Conselho Diretor da EMC.",238,1,"0,75","0,893"
+2025-10-06 19:39:10,"De acordo com a resolução, quais são os tipos de estágio que um estudante de graduação da EMC/UFG pode realizar?"," Os tipos de estágio que um estudante de graduação da EMC/UFG pode realizar são:
+
+- **Estágio Curricular Obrigatório**
+- **Estágio Curricular Não Obrigatório**",224,1,1,"0,977"
+2025-10-06 19:40:19,Qual é a carga horária semanal máxima permitida para o estágio curricular obrigatório e em quais casos essa carga horária pode ser excedida?," - **Carga horária semanal máxima**: 30 horas (6 horas/dia).
+- **Exceções para carga horária de 40 horas/semana**:
+  1. Durante o período de verão, se matriculado apenas na disciplina Estágio Supervisionado.
+  2. Durante os semestres letivos, se matriculado na disciplina Estágio Supervisionado e em disciplinas sem aulas presenciais programadas. ",484,1,1,"0,955"
+2025-10-06 19:41:21,Quais documentos um estudante deve encaminhar à CEPFM como exigência para a matrícula na disciplina de Estágio Supervisionado?," Para a matrícula na disciplina de Estágio Supervisionado, o estudante deve encaminhar à CEPFM:
+
+- Termo de Compromisso de Estágio (em três vias)
+- Plano de Atividades (em três vias)
+- Extrato acadêmico do Portal do Estudante da UFG (em uma via)
+- Requerimento de saída para estágio",355,1,1,"0,966"
+2025-10-06 19:42:07,"No estágio curricular não obrigatório, quem é o responsável pela concessão do seguro contra acidentes pessoais e da bolsa ou contraprestação acordada?"," - No estágio curricular não obrigatório, a responsabilidade pela concessão do seguro contra acidentes pessoais é da parte concedente do estágio.
+- A concessão da bolsa ou contraprestação acordada também é de responsabilidade da parte concedente.",319,1,1,"0,967"
+2025-10-06 19:42:53,Quais são as atribuições do Núcleo Docente Estruturante (NDE) na elaboração do Projeto Pedagógico de Curso (PPC)?," As atribuições do Núcleo Docente Estruturante (NDE) na elaboração do Projeto Pedagógico de Curso (PPC) incluem:
+
+- **Elaboração do PPC**: O NDE é responsável por elaborar o PPC, com a participação de todas as unidades envolvidas na oferta de componentes curriculares (Fonte: RGCG.pdf, p. 2).       
+- **Atualização e Avaliação**: O NDE deve realizar avaliações e reestruturações periódicas do PPC, considerando transformações legais, científicas, sociais e tecnológicas (Fonte: Resolucao_CEPEC_2025_1927.pdf, p. 10).
+- **Inclusão de Temáticas**: Propor a inserção de discussões relevantes, como a educação inclusiva, no currículo (Fonte: Resolucao_CEPEC_2025_1927.pdf, p. 12).
+- **Gestão e Avaliação**: O NDE deve contemplar políticas de gestão e avaliação dos processos de ensino-aprendizagem no PPC (Fonte: RGCG.pdf, p. 2).",498,1,1,"0,96"
+2025-10-06 19:43:53,"De acordo com o documento, quais são os tipos de componentes curriculares que compõem a estrutura do curso, além do Núcleo Comum (NC) e Núcleo Específico (NE)?"," Os tipos de componentes curriculares que compõem a estrutura do curso, além do Núcleo Comum (NC) e Núcleo Específico (NE), são:
+
+- **Núcleo Livre (NL)**: visa ampliar e diversificar a formação do estudante.
+- **Atividades Complementares (AC)**: não especificadas no contexto, mas mencionadas como parte da estrutura curricular.
+- **Atividades Curriculares de Extensão (ACEx)**: também parte da estrutura curricular.",279,1,1,"0,936"
+2025-10-06 19:44:36,Em que circunstâncias a carga horária de um estágio curricular não obrigatório pode ser validada como Atividade Curricular de Extensão (ACEx)?," A carga horária de um estágio curricular não obrigatório pode ser validada como Atividade Curricular de Extensão (ACEx) nas seguintes circunstâncias:
+
+- **Condições Específicas**: Deve atender às condições estabelecidas em uma resolução específica.
+- **Vínculo Atual**: A validação pode ser apenas do estágio desenvolvido no vínculo atual do estudante.
+- **Decisão dos Conselhos**: A validação é facultada aos Conselhos Diretores ou Colegiados das Unidades Acadêmicas Especiais.",464,1,1,"0,977"
+2025-10-06 19:45:44,"Quais são as causas de interrupção de um estágio, tanto obrigatório quanto não obrigatório, conforme o regulamento?"," As causas de interrupção de um estágio, tanto obrigatório quanto não obrigatório, são:
+
+1. Término do compromisso.
+2. Abandono do local de estágio pelo estagiário.
+3. Cumprimento da carga horária dos núcleos do curso, mas necessidade de comprovar carga horária de Atividades Complementares.
+4. Integralização do currículo a 15 dias da colação de grau.
+5. Exclusão do quadro discente da UFG.
+6. Pedido do estagiário, com justificativa analisada pelo coordenador e professor orientador.
+7. Comportamento incompatível com normas éticas e administrativas do local de estágio.
+8. Descumprimento do Termo de Compromisso.
+9. Não cumprimento das obrigações pela instituição conveniada.",794,1,1,"0,941"
+2025-10-06 19:46:42,"Como é calculado o Índice de Prioridade (IP) para a solicitação de matrícula, e quais são os critérios de desempate utilizados?"," - **Cálculo do Índice de Prioridade (IP)**:
+  - Fórmula: IP = 100*TA + 10*TI – 3*QR
+    - TA = (CHA/CHC)
+    - TI = (CHI/CHT), com TI limitado a 1
+    - QR = número de reprovações por faltas
+  - CHA: carga horária total de componentes aprovados nos últimos dois períodos
+  - CHC: carga horária total cursada nos últimos dois períodos
+  - CHI: carga horária integralizada em componentes curriculares
+  - CHT: carga horária total do curso
+
+- **Critérios de Desempate**:
+  1. Estudante com maior TA.",576,1,1,"0,918"
+Média Aritmética,,,"344,0444444",,"0,7461428571","0,8200519481"
